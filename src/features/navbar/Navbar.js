@@ -8,6 +8,8 @@ import {
 import Banners from "../../pages/Banners";
 import HeroSection from "../../pages/HeroSection";
 import { Link } from "react-router-dom";
+import ProductList from "../product-list/components/ProductList";
+import ProductDetail from "../product-list/components/ProductDetail";
 
 const user = {
   name: "Tom Cook",
@@ -30,6 +32,9 @@ function classNames(...classes) {
 }
 
 export default function Navbar({ children }) {
+  const isProductListPage = children.type === ProductList;
+  const isProductDetailPage = children.type === ProductDetail;
+
   return (
     <>
       <div className="min-h-full">
@@ -217,8 +222,8 @@ export default function Navbar({ children }) {
             </>
           )}
         </Disclosure>
-        <Banners />
-        <HeroSection />
+        { isProductListPage &&  <Banners />}
+        { isProductListPage && <HeroSection />}
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             {children}

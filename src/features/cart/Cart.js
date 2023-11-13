@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import { ShoppingBagIcon } from "@heroicons/react/20/solid";
+import { HomeIcon, ShoppingBagIcon } from "@heroicons/react/20/solid";
 
 const products = [
   {
@@ -41,13 +41,27 @@ export default function Cart() {
   const [open, setOpen] = useState(true);
 
   return (
-    <div>
-      <div className="flex space-x-2 mx-auto shadow-orange-200 border-b-2 bg-white rounded-b-none rounded-lg mt-4 max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
-        <h1 className="text-3xl font-bold font-serif tracking-tight text-blue-950 ">
+    <div className="py-4">
+      <div className=" flex justify-between  mx-auto shadow-orange-200 border-b-2 bg-white rounded-b-none rounded-lg mt-4 max-w-7xl px-6 py-6 sm:px-6 lg:px-8 ">
+        <h1 className="flex  text-3xl font-bold font-serif tracking-tight text-blue-950 py-2">
           {" "}
           Cart{" "}
+          <ShoppingBagIcon
+            className="h-8 w-7 ml-2 text-blue-900"
+            aria-hidden="true"
+          />
         </h1>
-        <ShoppingBagIcon className="h-8 w-7 text-blue-900" aria-hidden="true" />
+        <Link to="/">
+          <div className="flex justify-center items-center px-3 py-3 cursor-pointer hover:bg-slate-100 rounded-md">
+            <HomeIcon
+              className="inline h-8 w-7 text-blue-900"
+              aria-hidden="true"
+            />
+            <p className="font-2xl ml-2 text-cyan-950 font-serif font-semibold ">
+              Home
+            </p>
+          </div>
+        </Link>  
       </div>
       <div className="mt-1 shadow-md bg-white  mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flow-root">
@@ -113,36 +127,15 @@ export default function Cart() {
         <p className="mt-0.5 text-sm text-gray-500">
           Shipping and taxes calculated at checkout.
         </p>
-        <div className="mt-4 flex items-center justify-center">
-          <a
-            href="#"
-            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+        <div className="mt-4 flex items-center justify-center pb-4">
+          <Link
+            to="/checkout"
+            className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
           >
-            Checkout
-          </a>
+            Check-Out
+          </Link>
         </div>
-        <div className="mt-6  text-sm text-gray-500">
-          {/* <p>
-            Or
-          </p>   */}
-          <div className="mx-auto flex items-center mt-2 w-[40%]">
-            <div className="border-b-2  border-gray-300 flex-grow"></div>
-            <p className="mx-4 text-gray-900 font-medium">Or</p>
-            <div className="border-b-2 border-gray-300 flex-grow"></div>
-          </div>
-          <div className="flex justify-center text-center mt-2">
-            <Link to='/'>  
-              <button
-                type="button"
-                className="font-medium text-indigo-600 hover:text-indigo-500 "
-                onClick={() => setOpen(false)}
-              >
-                Continue Shopping
-                <span aria-hidden="true"> &rarr;</span>
-              </button>
-            </Link>   
-          </div>
-        </div>
+        
       </div>
     </div>
   );
