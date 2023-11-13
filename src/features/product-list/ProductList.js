@@ -113,7 +113,7 @@ export default function ProductList() {
 
   return (
     <div>
-      <div className="bg-white">
+      <div className="bg-white ">
         <div>
           {/* Mobile filter dialog */}
           <Transition.Root show={mobileFiltersOpen} as={Fragment}>

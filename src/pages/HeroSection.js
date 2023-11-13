@@ -15,7 +15,7 @@ export default function HeroSection() {
         >
         </div>
         <div className="mx-auto max-w-2xl py-16 sm:py-10 lg:py-16">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+          <div className="hidden sm:mb-8 sm:flex sm:justify-center mt-9">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Announcing our next round of funding.{' '}
               <a href="#" className="font-semibold text-indigo-600">
