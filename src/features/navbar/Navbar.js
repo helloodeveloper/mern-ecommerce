@@ -8,8 +8,8 @@ import {
 import Banners from "../../pages/Banners";
 import HeroSection from "../../pages/HeroSection";
 import { Link } from "react-router-dom";
-import ProductList from "../product-list/components/ProductList";
-import ProductDetail from "../product-list/components/ProductDetail";
+import ProductList from "../product/components/ProductList";
+import ProductDetail from "../product/components/ProductDetail";
 
 const user = {
   name: "Tom Cook",
@@ -188,18 +188,18 @@ export default function Navbar({ children }) {
                         {user.email}
                       </div>
                     </div>
-                    <Link to='/cart'>
-                    <button
-                      type="button"
-                      className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white "
-                    >
-                      <span className="absolute -inset-1.5" />
-                      <span className="sr-only">View cart</span>
-                      <ShoppingCartIcon
-                        className="h-6 w-6"
-                        aria-hidden="true"
-                      />
-                    </button>
+                    <Link to="/cart">
+                      <button
+                        type="button"
+                        className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white "
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">View cart</span>
+                        <ShoppingCartIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      </button>
                     </Link>
                     <span className="inline-flex items-center rounded-md mb-5 -ml-3 z-0 bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                       3
@@ -222,8 +222,8 @@ export default function Navbar({ children }) {
             </>
           )}
         </Disclosure>
-        { isProductListPage &&  <Banners />}
-        { isProductListPage && <HeroSection />}
+        {isProductListPage && <Banners />}
+        <div className="w-full">{isProductListPage && <HeroSection />}</div>
         <main>
           <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             {children}

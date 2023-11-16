@@ -283,7 +283,10 @@ function Checkout() {
                 </ul>
               </div>
           </div>
-          <div className="bg-white rounded-lg rounded-t-none shadow-lg  px-5 py-6 mt-2 ">
+        </div>
+        <div className="lg:col-span-2">
+          <div className="">
+          <div className="bg-white rounded-t-lg shadow-lg  px-5 py-6 mt-12 ">
           <div className=" space-y-10">
                   <fieldset>
                     <legend className="text-md font-bold leading-6 text-gray-900">
@@ -327,11 +330,8 @@ function Checkout() {
                     </div>
                   </fieldset>
                 </div>
-          </div>
-        </div>
-        <div className="lg:col-span-2">
-          <div>
-            <div className="mt-12 flex justify-between  mx-auto shadow-orange-200 border-b-2 bg-white rounded-b-none rounded-lg max-w-7xl px-4 py-4  sm:px-6 lg:px-8 ">
+          </div> 
+            <div className="mt-3 flex justify-between  mx-auto shadow-lg  border-b-2 bg-white  max-w-7xl px-4 py-4  sm:px-6 lg:px-8 ">
               <h1 className="flex mt-2 text-3xl font-bold font-serif tracking-tight text-blue-950 ">
                 {" "}
                 Cart{" "}
