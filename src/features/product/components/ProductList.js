@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllProductsAsync, selectAllProducts } from "../productSlice";
+import { fetchAllProductsAsync, selectAllProducts,  fetchProductsByFiltersAsync
+} from "../productSlice";
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -200,10 +201,27 @@ export default function ProductList() {
   const dispatch = useDispatch();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const products = useSelector(selectAllProducts);
+ // const products = useSelector(selectAllProducts);
+  const [filter, setFilter] = useState({});
+
+  const handleFilter = (e, section, option) => {
+    const newFilter = { ...filter, [section.id]: option.value };
+   
+    setFilter(newFilter);
+    dispatch(fetchProductsByFiltersAsync(newFilter));
+    console.log(section.id, option.value);
+  };
+
+  const handleSort = (e, option) => {
+    const newFilter = { ...filter, _sort: option.sort, _order:option.order };
+    setFilter(newFilter);
+    dispatch(fetchProductsByFiltersAsync(newFilter));
+  };
 
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
   }, [dispatch]);
+
 
   return (
     <div>
@@ -296,7 +314,9 @@ export default function ProductList() {
                                         defaultValue={option.value}
                                         type="checkbox"
                                         defaultChecked={option.checked}
-                                        onChange={e=>handleFilter(section, option)}
+                                        onChange={(e) =>
+                                    handleFilter(e, section, option)
+                                  }
                                         className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                       />
                                       <label
@@ -354,6 +374,7 @@ export default function ProductList() {
                             {({ active }) => (
                               <a
                                 href={option.href}
+                                onClick={e=>handleSort(e,option)}
                                 className={classNames(
                                   option.current
                                     ? "font-medium text-gray-900"
@@ -439,7 +460,9 @@ export default function ProductList() {
                                     defaultValue={option.value}
                                     type="checkbox"
                                     defaultChecked={option.checked}
-                                    onChange={e=>handleFilter(section, option)}
+                                    onChange={(e) =>
+                                    handleFilter(e, section, option)
+                                  }
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                   />
                                   <label
