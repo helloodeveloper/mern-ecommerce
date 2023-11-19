@@ -15,11 +15,8 @@ import Pagination from "../../../pages/Pagination";
 import { Link } from "react-router-dom";
 
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
+  { name: "Price: Low to High", sort:'price',order:'asc', current: false },
+  { name: "Price: High to Low", sort:'price',order:'desc', current: false },
 ];
 
 const filters = [
@@ -53,12 +50,6 @@ const filters = [
     id: "brand",
     name: "Brands",
     options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
       { value: "Apple", label: "Apple", checked: false },
       { value: "Samsung", label: "Samsung", checked: false },
       { value: "OPPO", label: "OPPO", checked: false },
@@ -87,8 +78,6 @@ const filters = [
       { value: "Hemani Tea", label: "Hemani Tea", checked: false },
       { value: "Dermive", label: "Dermive", checked: false },
       { value: "ROREC White Rice", label: "ROREC White Rice", checked: false },
-      { value: "Fair & Clear", label: "Fair & Clear", checked: false },
-      { value: "Saaf & Khaas", label: "Saaf & Khaas", checked: false },
       { value: "Bake Parlor Big", label: "Bake Parlor Big", checked: false },
       {
         value: "Baking Food Items",
@@ -263,7 +252,7 @@ export default function ProductList() {
                       </h2>
                       <button
                         type="button"
-                        className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                        className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400 cursor-pointer"
                         onClick={() => setMobileFiltersOpen(false)}
                       >
                         <span className="sr-only">Close menu</span>
@@ -368,7 +357,7 @@ export default function ProductList() {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1">
+                      <div className="py-1 cursor-pointer">
                         {sortOptions.map((option) => (
                           <Menu.Item key={option.name}>
                             {({ active }) => (
@@ -463,7 +452,7 @@ export default function ProductList() {
                                     onChange={(e) =>
                                     handleFilter(e, section, option)
                                   }
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
                                   />
                                   <label
                                     htmlFor={`filter-${section.id}-${optionIdx}`}
