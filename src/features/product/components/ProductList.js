@@ -22,7 +22,7 @@ import {
 } from "@heroicons/react/20/solid";
 import { ITEMS_PER_PAGE } from "../../../app/constants";
 import { Link } from "react-router-dom";
-import { fetchCategories } from "../productApi";
+
 
 const sortOptions = [
   { name: "Price: Low to High", sort: "price", order: "asc", current: false },
@@ -96,10 +96,12 @@ export default function ProductList() {
     setPage(1);
   }, [totalItems, sort]);
 
+
   useEffect(() => {
     dispatch(fetchBrandsAsync());
     dispatch(fetchCategoriesAsync());
-  }, []);
+    //react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return (
     <div>
@@ -368,7 +370,10 @@ export default function ProductList() {
 
                       <div className=" mt-6 ml-0 grid grid-cols-1 gap-x-2 gap-y-10 items-center justify-center sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8">
                         {products.map((product) => (
-                          <Link to="product-detail">
+                          <Link
+                            to={`/product-detail/${product.id}`}
+                            key={product.id}
+                          >
                             <div
                               key={product.id}
                               className="group relative  box-border shadow-lg px-2 py-2 bg-gray-50 rounded-lg"

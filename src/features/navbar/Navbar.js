@@ -22,9 +22,9 @@ const navigation = [
   { name: "To change it later", to: "/cart", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Your Profile", link: "/" },
+  { name: "Settings", link: "/" },
+  { name: "Sign out", link: "/login" },
 ];
 
 function classNames(...classes) {
@@ -33,7 +33,6 @@ function classNames(...classes) {
 
 export default function Navbar({ children }) {
   const isProductListPage = children.type === ProductList;
-  const isProductDetailPage = children.type === ProductDetail;
 
   return (
     <>

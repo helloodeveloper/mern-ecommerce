@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchAllProducts, fetchProductsByFilters, fetchCategories, fetchBrands } from "./productApi";
+import {
+  fetchAllProducts,
+  fetchProductsByFilters,
+  fetchBrands,
+  fetchCategories,
+  fetchProductById,
+} from "./productApi";
 
 const initialState = {
   products: [],
@@ -7,12 +13,21 @@ const initialState = {
   brands: [],
   status: "idle",
   totalItems: 0,
+  selectedProduct: null,
 };
 
 export const fetchAllProductsAsync = createAsyncThunk(
   "product/fetchAllProducts",
   async () => {
     const response = await fetchAllProducts();
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+export const fetchAllProductByIdAsync = createAsyncThunk(
+  "product/fetchProductById",
+  async (id) => {
+    const response = await fetchProductById(id);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -26,7 +41,6 @@ export const fetchProductsByFiltersAsync = createAsyncThunk(
     return response.data;
   }
 );
-
 
 export const fetchCategoriesAsync = createAsyncThunk(
   "product/fetchCategories",
@@ -88,6 +102,14 @@ export const productSlice = createSlice({
         state.status = "idle";
         state.brands = action.payload;
       })
+
+      .addCase(fetchAllProductByIdAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchAllProductByIdAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.selectedProduct = action.payload;
+      });
   },
 });
 
@@ -96,6 +118,7 @@ export const { increment } = productSlice.actions;
 export const selectAllProducts = (state) => state.product.products;
 export const selectCategories = (state) => state.product.categories;
 export const selectBrands = (state) => state.product.brands;
+export const selectProductById = (state) => state.product.selectedProduct;
 
 
 export const selectTotalItems = (state) => state.product.totalItems;
