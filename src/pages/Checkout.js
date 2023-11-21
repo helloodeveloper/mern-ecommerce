@@ -473,12 +473,12 @@ function Checkout() {
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div className="mt-4 flex items-center justify-center pb-4">
-                      <Link
-                        to="/checkout"
-                        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      <div
+                        onClick={handleOrder}
+                        className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                       >
                         Check-Out
-                      </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
