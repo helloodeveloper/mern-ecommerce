@@ -23,7 +23,6 @@ import {
 import { ITEMS_PER_PAGE } from "../../../app/constants";
 import { Link } from "react-router-dom";
 
-
 const sortOptions = [
   { name: "Price: Low to High", sort: "price", order: "asc", current: false },
   { name: "Price: High to Low", sort: "price", order: "desc", current: false },
@@ -95,7 +94,6 @@ export default function ProductList() {
   useEffect(() => {
     setPage(1);
   }, [totalItems, sort]);
-
 
   useEffect(() => {
     dispatch(fetchBrandsAsync());
