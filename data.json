@@ -2328,7 +2328,26 @@
     {
       "email": "testuser@gmail.com",
       "password": "Qwerty123",
-      "addresses": [],
+      "addresses": [
+        {
+          "name": "Ankit Yadav",
+          "email": "testuser@gmail.com",
+          "city": "Faridabad",
+          "state": "Haryana",
+          "pinCode": "121001",
+          "phone": "09319421847",
+          "street": "Housen0-44,sector-56"
+        },
+        {
+          "name": "Ankit Yadav",
+          "email": "ankityadav@gmail.com",
+          "city": "Hisar",
+          "state": "Haryana",
+          "pinCode": "121001",
+          "phone": "09319421847",
+          "street": "Boys Hostel-3"
+        }
+      ],
       "id": 1
     },
     {
@@ -2343,54 +2362,62 @@
     {
       "items": [
         {
-          "title": "Microsoft Surface Laptop 4",
-          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
           "price": 1499,
-          "discountPercentage": 10.23,
-          "rating": 4.43,
-          "stock": 68,
-          "brand": "Microsoft Surface",
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
           "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
           "images": [
-            "https://i.dummyjson.com/data/products/8/1.jpg",
-            "https://i.dummyjson.com/data/products/8/2.jpg",
-            "https://i.dummyjson.com/data/products/8/3.jpg",
-            "https://i.dummyjson.com/data/products/8/4.jpg",
-            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+            "https://i.dummyjson.com/data/products/7/1.jpg",
+            "https://i.dummyjson.com/data/products/7/2.jpg",
+            "https://i.dummyjson.com/data/products/7/3.jpg",
+            "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
           ],
-          "quantity": 2,
+          "quantity": 1,
           "user": 1,
           "id": 1
         }
       ],
-      "totalAmount": 2998,
-      "totalItems": 2,
+      "totalAmount": 1499,
+      "totalItems": 1,
       "user": {
         "email": "testuser@gmail.com",
         "password": "Qwerty123",
         "addresses": [
           {
-            "name": "Ankit ",
+            "name": "Ankit Yadav",
             "email": "testuser@gmail.com",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56",
             "city": "Faridabad",
             "state": "Haryana",
-            "pinCode": "121001"
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Housen0-44,sector-56"
+          },
+          {
+            "name": "Ankit Yadav",
+            "email": "ankityadav@gmail.com",
+            "city": "Hisar",
+            "state": "Haryana",
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Boys Hostel-3"
           }
         ],
         "id": 1
       },
       "paymentMethod": "cash",
       "selectedAddress": {
-        "name": "Ankit ",
+        "name": "Ankit Yadav",
         "email": "testuser@gmail.com",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56",
         "city": "Faridabad",
         "state": "Haryana",
-        "pinCode": "121001"
+        "pinCode": "121001",
+        "phone": "09319421847",
+        "street": "Housen0-44,sector-56"
       },
       "status": "pending",
       "id": 1
@@ -2398,277 +2425,65 @@
     {
       "items": [
         {
-          "title": "Infinix INBOOK",
-          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-          "price": 1099,
-          "discountPercentage": 11.83,
-          "rating": 4.54,
-          "stock": 96,
-          "brand": "Infinix",
+          "title": "Samsung Galaxy Book",
+          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+          "price": 1499,
+          "discountPercentage": 4.15,
+          "rating": 4.25,
+          "stock": 50,
+          "brand": "Samsung",
           "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+          "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
           "images": [
-            "https://i.dummyjson.com/data/products/9/1.jpg",
-            "https://i.dummyjson.com/data/products/9/2.png",
-            "https://i.dummyjson.com/data/products/9/3.png",
-            "https://i.dummyjson.com/data/products/9/4.jpg",
-            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+            "https://i.dummyjson.com/data/products/7/1.jpg",
+            "https://i.dummyjson.com/data/products/7/2.jpg",
+            "https://i.dummyjson.com/data/products/7/3.jpg",
+            "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
           ],
           "quantity": 1,
           "user": 1,
           "id": 1
         }
       ],
-      "totalAmount": 1099,
+      "totalAmount": 1499,
       "totalItems": 1,
       "user": {
         "email": "testuser@gmail.com",
         "password": "Qwerty123",
         "addresses": [
           {
-            "name": "Ankit ",
+            "name": "Ankit Yadav",
             "email": "testuser@gmail.com",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56",
             "city": "Faridabad",
             "state": "Haryana",
-            "pinCode": "121001"
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Housen0-44,sector-56"
+          },
+          {
+            "name": "Ankit Yadav",
+            "email": "ankityadav@gmail.com",
+            "city": "Hisar",
+            "state": "Haryana",
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Boys Hostel-3"
           }
         ],
         "id": 1
       },
       "paymentMethod": "cash",
       "selectedAddress": {
-        "name": "Ankit ",
+        "name": "Ankit Yadav",
         "email": "testuser@gmail.com",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56",
         "city": "Faridabad",
         "state": "Haryana",
-        "pinCode": "121001"
+        "pinCode": "121001",
+        "phone": "09319421847",
+        "street": "Housen0-44,sector-56"
       },
       "status": "pending",
       "id": 2
-    },
-    {
-      "items": [
-        {
-          "title": "Infinix INBOOK",
-          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-          "price": 1099,
-          "discountPercentage": 11.83,
-          "rating": 4.54,
-          "stock": 96,
-          "brand": "Infinix",
-          "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/9/1.jpg",
-            "https://i.dummyjson.com/data/products/9/2.png",
-            "https://i.dummyjson.com/data/products/9/3.png",
-            "https://i.dummyjson.com/data/products/9/4.jpg",
-            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 1099,
-      "totalItems": 1,
-      "user": {
-        "email": "testuser@gmail.com",
-        "password": "Qwerty123",
-        "addresses": [
-          {
-            "name": "Ankit ",
-            "email": "testuser@gmail.com",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56",
-            "city": "Faridabad",
-            "state": "Haryana",
-            "pinCode": "121001"
-          }
-        ],
-        "id": 1
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": {
-        "name": "Ankit ",
-        "email": "testuser@gmail.com",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56",
-        "city": "Faridabad",
-        "state": "Haryana",
-        "pinCode": "121001"
-      },
-      "status": "pending",
-      "id": 3
-    },
-    {
-      "items": [
-        {
-          "title": "Infinix INBOOK",
-          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-          "price": 1099,
-          "discountPercentage": 11.83,
-          "rating": 4.54,
-          "stock": 96,
-          "brand": "Infinix",
-          "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/9/1.jpg",
-            "https://i.dummyjson.com/data/products/9/2.png",
-            "https://i.dummyjson.com/data/products/9/3.png",
-            "https://i.dummyjson.com/data/products/9/4.jpg",
-            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 2
-        }
-      ],
-      "totalAmount": 1099,
-      "totalItems": 1,
-      "user": {
-        "email": "testuser@gmail.com",
-        "password": "Qwerty123",
-        "addresses": [
-          {
-            "name": "Ankit ",
-            "email": "testuser@gmail.com",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56",
-            "city": "Faridabad",
-            "state": "Haryana",
-            "pinCode": "121001"
-          }
-        ],
-        "id": 1
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": {
-        "name": "Ankit ",
-        "email": "testuser@gmail.com",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56",
-        "city": "Faridabad",
-        "state": "Haryana",
-        "pinCode": "121001"
-      },
-      "status": "pending",
-      "id": 4
-    },
-    {
-      "items": [
-        {
-          "title": "Infinix INBOOK",
-          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-          "price": 1099,
-          "discountPercentage": 11.83,
-          "rating": 4.54,
-          "stock": 96,
-          "brand": "Infinix",
-          "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/9/1.jpg",
-            "https://i.dummyjson.com/data/products/9/2.png",
-            "https://i.dummyjson.com/data/products/9/3.png",
-            "https://i.dummyjson.com/data/products/9/4.jpg",
-            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 2
-        }
-      ],
-      "totalAmount": 1099,
-      "totalItems": 1,
-      "user": {
-        "email": "testuser@gmail.com",
-        "password": "Qwerty123",
-        "addresses": [
-          {
-            "name": "Ankit ",
-            "email": "testuser@gmail.com",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56",
-            "city": "Faridabad",
-            "state": "Haryana",
-            "pinCode": "121001"
-          }
-        ],
-        "id": 1
-      },
-      "paymentMethod": "card",
-      "selectedAddress": {
-        "name": "Ankit ",
-        "email": "testuser@gmail.com",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56",
-        "city": "Faridabad",
-        "state": "Haryana",
-        "pinCode": "121001"
-      },
-      "status": "pending",
-      "id": 5
-    },
-    {
-      "items": [
-        {
-          "title": "Infinix INBOOK",
-          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-          "price": 1099,
-          "discountPercentage": 11.83,
-          "rating": 4.54,
-          "stock": 96,
-          "brand": "Infinix",
-          "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/9/1.jpg",
-            "https://i.dummyjson.com/data/products/9/2.png",
-            "https://i.dummyjson.com/data/products/9/3.png",
-            "https://i.dummyjson.com/data/products/9/4.jpg",
-            "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 2
-        }
-      ],
-      "totalAmount": 1099,
-      "totalItems": 1,
-      "user": {
-        "email": "testuser@gmail.com",
-        "password": "Qwerty123",
-        "addresses": [
-          {
-            "name": "Ankit ",
-            "email": "testuser@gmail.com",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56",
-            "city": "Faridabad",
-            "state": "Haryana",
-            "pinCode": "121001"
-          }
-        ],
-        "id": 1
-      },
-      "paymentMethod": "card",
-      "selectedAddress": {
-        "name": "Ankit ",
-        "email": "testuser@gmail.com",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56",
-        "city": "Faridabad",
-        "state": "Haryana",
-        "pinCode": "121001"
-      },
-      "status": "pending",
-      "id": 6
     }
   ]
 }

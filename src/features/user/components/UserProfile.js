@@ -51,30 +51,32 @@ export default function UserProfile() {
 
   return (
     <div>
-      <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-            Name: {user.name ? user.name : "New User"}
+      <div className="mx-auto mt-4 shadow-lg bg-white max-w-7xl px-4 sm:px-6 lg:px-8 rounded-xl">
+        <div className="shadow-sm rounded-b-md border-t border-gray-200 px-4 py-6 sm:px-6">
+          <h1 className="text-2xl my-2 font-bold tracking-tight text-green-900">
+            Login Info:
           </h1>
-          <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-            email address : {user.email}
+          <h3 className="text-xl my-2 font-bold tracking-tight text-blue-900">
+            Email address : {user.email}
           </h3>
         </div>
 
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <button
-            onClick={(e) => {
-              setShowAddAddressForm(true);
-              setSelectedEditIndex(-1);
-            }}
-            type="submit"
-            className="rounded-md my-5 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Add New Address
-          </button>
-          {showAddAddressForm ? (
+          {!showAddAddressForm ? (
+            <button
+              onClick={(e) => {
+                setShowAddAddressForm(true);
+                setSelectedEditIndex(-1);
+              }}
+              type="submit"
+              className="rounded-md my-5 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Add New Address
+            </button>
+          ) : null}
+          {showAddAddressForm && selectedEditIndex === -1 ? (
             <form
-              className="bg-white px-5 py-12 mt-12"
+              className="px-5 py-12 mt-0 shadow-lg mb-8 bg-gray-50"
               noValidate
               onSubmit={handleSubmit((data) => {
                 console.log(data);
@@ -264,13 +266,16 @@ export default function UserProfile() {
               </div>
             </form>
           ) : null}
-
-          <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
+          {selectedEditIndex === -1 ? (
+            <p className="mt-2 px-4 text-lg font-serif underline font-semibold text-blue-950 text-black-700">
+              Your Addresses :
+            </p>
+          ) : null}
           {user.addresses.map((address, index) => (
             <div>
               {selectedEditIndex === index ? (
                 <form
-                  className="bg-white px-5 py-12 mt-12"
+                  className="bg-white px-5 py-12 mt-0 border-t-2"
                   noValidate
                   onSubmit={handleSubmit((data) => {
                     console.log(data);
@@ -281,13 +286,9 @@ export default function UserProfile() {
                   <div className="space-y-12">
                     <div className="border-b border-gray-900/10 pb-12">
                       <h2 className="text-2xl font-semibold leading-7 text-gray-900">
-                        Personal Information
+                        Make your changes :
                       </h2>
-                      <p className="mt-1 text-sm leading-6 text-gray-600">
-                        Use a permanent address where you can receive mail.
-                      </p>
-
-                      <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                      <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                         <div className="sm:col-span-4">
                           <label
                             htmlFor="name"
@@ -471,51 +472,55 @@ export default function UserProfile() {
                         type="submit"
                         className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
-                        Edit Address
+                        Save Changes
                       </button>
                     </div>
                   </div>
                 </form>
               ) : null}
-              <div className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200">
-                <div className="flex gap-x-4">
-                  <div className="min-w-0 flex-auto">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">
-                      {address.name}
-                    </p>
-                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                      {address.street}
-                    </p>
-                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                      {address.pinCode}
-                    </p>
-                  </div>
-                </div>
-                <div className="hidden sm:flex sm:flex-col sm:items-end">
-                  <p className="text-sm leading-6 text-gray-900">
-                    Phone: {address.phone}
-                  </p>
-                  <p className="text-sm leading-6 text-gray-500">
-                    {address.city}
-                  </p>
-                </div>
-                <div className="hidden sm:flex sm:flex-col sm:items-end">
-                  <button
-                    onClick={(e) => handleEditForm(index)}
-                    type="button"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={(e) => handleRemove(e, index)}
-                    type="button"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
+              {selectedEditIndex === -1 ? (
+                <>
+                  <div className="flex justify-between gap-x-6 px-5 py-2 mt-3 mb-8 shadow-lg rounded-lg border-gray-200 hover:bg-gray-50">
+                    <div className="flex gap-x-4">
+                      <div className="min-w-0 flex-auto">
+                        <p className="text-lg font-semibold leading-6 text-gray-900">
+                          {address.name}
+                        </p>
+                        <p className="mt-1 text-md leading-5 text-gray-500">
+                          {address.street}
+                        </p>
+                        <p className="mt-1 text-sm leading-5 text-gray-500">
+                          {address.pinCode}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="hidden sm:flex sm:flex-col sm:items-end">
+                      <p className="text-md leading-6 text-gray-900">
+                        <strong> Phone:</strong> {address.phone}
+                      </p>
+                      <p className="text-md leading-6 text-gray-500">
+                        {address.city}
+                      </p>
+                    </div>
+                    <div className="hidden sm:flex sm:flex-col sm:items-end">
+                      <button
+                        onClick={(e) => handleEditForm(index)}
+                        type="button"
+                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={(e) => handleRemove(e, index)}
+                        type="button"
+                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </div>{" "}
+                </>
+              ) : null}
             </div>
           ))}
         </div>

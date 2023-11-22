@@ -11,16 +11,13 @@ import { Link } from "react-router-dom";
 import ProductList from "../product/components/ProductList";
 import { useSelector } from "react-redux";
 import { selectItems } from "../cart/cartSlice";
+import { selectUserInfo } from "../user/userSlice";
 
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+
 const navigation = [
-  { name: "Home", to: "/", current: true },
-  { name: "To change it later", to: "/cart", current: false },
+  { name: "Home", to: "/", current: false },
+  { name: "Recent Orders", to: "/orders", current: false },
+  { name: "About", to: "/about-us", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", link: "/profile" },
@@ -35,10 +32,12 @@ function classNames(...classes) {
 export default function Navbar({ children }) {
   const isProductListPage = children.type === ProductList;
   const items = useSelector(selectItems);
+  const userInfo = useSelector(selectUserInfo);
+
 
   return (
     <>
-      <div className="min-h-full">
+      {userInfo && <div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
             <>
@@ -46,9 +45,11 @@ export default function Navbar({ children }) {
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <h1 className="ml-3 text-3xl font-bold text-gray-200 cursor-pointer font-serif hove hover:text-white">
-                        E-commerce
-                      </h1>
+                      <Link to="/">
+                        <h1 className="ml-3 text-3xl font-bold text-gray-200 cursor-pointer font-serif hove hover:text-white">
+                          Your Brand
+                        </h1>
+                      </Link>
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
@@ -58,8 +59,8 @@ export default function Navbar({ children }) {
                             to={item.to}
                             className={classNames(
                               item.current
-                                ? "text-gray-300 hover:bg-gray-700 hover:text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                ? "text-white hover:bg-gray-700 "
+                                : "text-white hover:bg-gray-700 ",
                               "rounded-md px-3 py-2 text-sm font-medium"
                             )}
                             aria-current={item.current ? "page" : undefined}
@@ -99,11 +100,19 @@ export default function Navbar({ children }) {
                           <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
-                            <img
-                              className="h-8 w-8 rounded-full"
-                              src={user.imageUrl}
-                              alt=""
-                            />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="white"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              className="w-12 h-12"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
                           </Menu.Button>
                         </div>
                         <Transition
@@ -179,18 +188,26 @@ export default function Navbar({ children }) {
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={user.imageUrl}
-                        alt=""
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="white"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        className="w-12 h-12"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">
-                        {user.name}
+                        {userInfo.name}
                       </div>
                       <div className="text-sm font-medium leading-none text-gray-400">
-                        {user.email}
+                        {userInfo.email}
                       </div>
                     </div>
                     <Link to="/cart">
@@ -236,7 +253,7 @@ export default function Navbar({ children }) {
             {children}
           </div>
         </main>
-      </div>
+      </div>}
     </>
   );
 }
