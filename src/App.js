@@ -8,11 +8,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
 import ProductDetailPage from "./pages/ProductDetailPage";
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectLoggedInUser } from './features/auth/authSlice';
-import { fetchItemsByUserIdAsync } from './features/cart/cartSlice';
-
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLoggedInUser } from "./features/auth/authSlice";
+import { fetchItemsByUserIdAsync } from "./features/cart/cartSlice";
+import UserOrdersPage from "./pages/UserOrdersPage";
+import UserProfilePage from "./pages/UserProfilePage.js";
+import { fetchLoggedInUserAsync } from "./features/user/userSlice";
+import Logout from "./features/auth/components/Logout";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import OrderSuccessPage from "./pages/OrderSuccessPage";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +61,27 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/order-success/:id",
+    element: <OrderSuccessPage />,
+  },
+  {
+    path: "/orders",
+    element: <UserOrdersPage />,
+    // we will add Page later right now using component directly.
+  },
+  {
+    path: "/profile",
+    element: <UserProfilePage />,
+  },
+  {
+    path: "/logout",
+    element: <Logout></Logout>,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPasswordPage></ForgotPasswordPage>,
+  },
+  {
     path: "/*",
     element: <Notfound />,
   },
@@ -65,11 +91,12 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
 
-  useEffect(()=>{
-    if(user){
-      dispatch(fetchItemsByUserIdAsync(user.id))
+  useEffect(() => {
+    if (user) {
+      dispatch(fetchItemsByUserIdAsync(user.id));
+      dispatch(fetchLoggedInUserAsync(user.id));
     }
-  },[dispatch, user])
+  }, [dispatch, user]);
 
   return <RouterProvider router={router} />;
 }

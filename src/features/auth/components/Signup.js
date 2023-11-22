@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Navigate } from "react-router-dom";
@@ -34,7 +33,11 @@ export default function Signup() {
             noValidate
             onSubmit={handleSubmit((data) => {
               dispatch(
-                createUserAsync({ email: data.email, password: data.password, addresses:[] })
+                createUserAsync({
+                  email: data.email,
+                  password: data.password,
+                  addresses: [],
+                })
               );
               console.log(data);
             })}

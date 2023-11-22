@@ -58,7 +58,6 @@ export default function ProductDetail() {
           <nav aria-label="Breadcrumb">
             {/* jsx-a11y/no-redundant-roles           */}
             <ol
-              role="list"
               className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
             >
               {product.breadcrumbs &&
@@ -321,7 +320,7 @@ export default function ProductDetail() {
                 </h3>
 
                 <div className="mt-4">
-                  <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+                  <ul className="list-disc space-y-2 pl-4 text-sm">
                     {highlights &&
                       highlights.map((highlight) => (
                         <li key={highlight} className="text-gray-400">

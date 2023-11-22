@@ -9,7 +9,6 @@ import Banners from "../../pages/Banners";
 import HeroSection from "../../pages/HeroSection";
 import { Link } from "react-router-dom";
 import ProductList from "../product/components/ProductList";
-import ProductDetail from "../product/components/ProductDetail";
 import { useSelector } from "react-redux";
 import { selectItems } from "../cart/cartSlice";
 
@@ -24,9 +23,9 @@ const navigation = [
   { name: "To change it later", to: "/cart", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", link: "/" },
-  { name: "Settings", link: "/" },
-  { name: "Sign out", link: "/login" },
+  { name: "Your Profile", link: "/profile" },
+  { name: "My Orders", link: "/orders" },
+  { name: "Sign out", link: "/logout" },
 ];
 
 function classNames(...classes) {
@@ -76,13 +75,14 @@ export default function Navbar({ children }) {
                       <Link to="/cart">
                         <button
                           type="button"
-                          className={`relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none  ${items.length < 1 ? 'cursor-not-allowed' : ''}`}
+                          className={`relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none  ${
+                            items.length < 1 ? "cursor-not-allowed" : ""
+                          }`}
                         >
                           <span className="absolute -inset-1.5" />
                           <span className="sr-only">View Cart</span>
                           <ShoppingCartIcon
-className={`h-6 w-6`}
-
+                            className={`h-6 w-6`}
                             aria-hidden="true"
                           />
                         </button>

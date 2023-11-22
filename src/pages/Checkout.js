@@ -7,14 +7,15 @@ import {
 } from "../features/cart/cartSlice";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import {
-  selectLoggedInUser,
-  updateUserAsync,
-} from "../features/auth/authSlice";
+import { updateUserAsync } from "../features/auth/authSlice";
 import { useState } from "react";
-import { createOrderAsync } from "../features/order/orderSlice";
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
+import { selectUserInfo } from "../features/user/userSlice";
 
-import { HomeIcon, ShoppingBagIcon } from "@heroicons/react/20/solid";
+import { ShoppingBagIcon } from "@heroicons/react/20/solid";
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
 function Checkout() {
   const dispatch = useDispatch();
@@ -24,15 +25,17 @@ function Checkout() {
     reset,
     formState: { errors },
   } = useForm();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const items = useSelector(selectItems);
+  const currentOrder = useSelector(selectCurrentOrder);
+
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [paymentMethod, setPaymentMethod] = useState("cash");
+  const [paymentMethod, setPaymentMethod] = useState(null);
   const handleQuantity = (e, item) => {
     dispatch(updateCartAsync({ ...item, quantity: +e.target.value }));
   };
@@ -48,15 +51,22 @@ function Checkout() {
     setPaymentMethod(e.target.value);
   };
   const handleOrder = (e) => {
-    const order = {
-      items,
-      totalAmount,
-      totalItems,
-      user,
-      paymentMethod,
-      selectedAddress,
-    };
-    dispatch(createOrderAsync(order));
+    if (selectedAddress && paymentMethod) {
+      const order = {
+        items,
+        totalAmount,
+        totalItems,
+        user,
+        paymentMethod,
+        selectedAddress,
+        status: "pending", // other status can be delivered, received.
+      };
+      dispatch(createOrderAsync(order));
+      // need to redirect from here to a new page of order success.
+    } else {
+      // TODO : we can use proper messaging popup here
+      alert("Please Select an Address or Payment method to check out further");
+    }
     //TODO : Redirect to order-success page
     //TODO : clear cart after order
     //TODO : on server change the stock number of items
@@ -65,6 +75,12 @@ function Checkout() {
   return (
     <>
       {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
@@ -116,6 +132,9 @@ function Checkout() {
                           autoComplete="given-name"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.name && (
+                          <p className="text-red-500">{errors.name.message}</p>
+                        )}
                       </div>
                     </div>
                     <div className="sm:col-span-4">
@@ -135,6 +154,9 @@ function Checkout() {
                           autoComplete="email"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.email && (
+                          <p className="text-red-500">{errors.email.message}</p>
+                        )}
                       </div>
                     </div>
 
@@ -154,6 +176,9 @@ function Checkout() {
                           type="tel"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.phone && (
+                          <p className="text-red-500">{errors.phone.message}</p>
+                        )}
                       </div>
                     </div>
 
@@ -173,6 +198,11 @@ function Checkout() {
                           id="street"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.street && (
+                          <p className="text-red-500">
+                            {errors.street.message}
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -193,6 +223,9 @@ function Checkout() {
                           autoComplete="address-level2"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.city && (
+                          <p className="text-red-500">{errors.city.message}</p>
+                        )}
                       </div>
                     </div>
 
@@ -213,6 +246,9 @@ function Checkout() {
                           autoComplete="address-level1"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.state && (
+                          <p className="text-red-500">{errors.state.message}</p>
+                        )}
                       </div>
                     </div>
 
@@ -233,6 +269,11 @@ function Checkout() {
                           autoComplete="postal-code"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.pinCode && (
+                          <p className="text-red-500">
+                            {errors.pinCode.message}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -272,7 +313,7 @@ function Checkout() {
                   <p className=" text-md leading-6 text-gray-600 pb-2">
                     Choose from Existing addresses
                   </p>
-                  <ul role="list">
+                  <ul>
                     {user.addresses.map((address, index) => (
                       <li
                         key={index}
@@ -396,10 +437,7 @@ function Checkout() {
                 <div className="py-2">
                   <div className="mt-0 shadow-md bg-white  mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
                     <div className="flow-root">
-                      <ul
-                        role="list"
-                        className="-my-6 divide-y divide-gray-200"
-                      >
+                      <ul className="-my-6 divide-y divide-gray-200">
                         {items.map((item) => (
                           <li key={item.id} className="flex py-6">
                             <div className=" shadow-md h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
