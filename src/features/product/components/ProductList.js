@@ -376,14 +376,15 @@ export default function ProductList() {
                               key={product.id}
                               className="group relative  box-border shadow-lg px-2 py-2 bg-gray-50 rounded-lg"
                             >
-                              <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg   group-hover:opacity-80 h-full  ">
+                              <div className="min-h-60 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg h-full group-hover:opacity-75 transform hover:scale-110 transition-transform">
                                 <img
                                   src={product.thumbnail}
                                   alt={product.title}
                                   style={{ filter: "brightness(80%)" }}
-                                  className="h-full w-full object-fill object-center  shadow-lg "
+                                  className="h-full w-full object-fill object-center"
                                 />
                               </div>
+
                               <div className="mt-4 flex justify-between">
                                 <div>
                                   <h3 className="text-md text-gray-700">
@@ -414,6 +415,14 @@ export default function ProductList() {
                                   </p>
                                 </div>
                               </div>
+                              {product.deleted && (
+                                <div>
+                                  <p className="text-sm text-red-400">
+                                    product deleted
+                                  </p>
+                                </div>
+                              )}
+                              {/* will not be needed when backend is implemented */}
                             </div>
                           </Link>
                         ))}

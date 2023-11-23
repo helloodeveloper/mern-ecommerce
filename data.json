@@ -15,9 +15,9 @@
         "https://i.dummyjson.com/data/products/1/1.jpg",
         "https://i.dummyjson.com/data/products/1/2.jpg",
         "https://i.dummyjson.com/data/products/1/3.jpg",
-        "https://i.dummyjson.com/data/products/1/4.jpg",
         "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
-      ]
+      ],
+      "deleted": true
     },
     {
       "id": 2,
@@ -2328,6 +2328,7 @@
     {
       "email": "testuser@gmail.com",
       "password": "Qwerty123",
+      "role": "admin",
       "addresses": [
         {
           "name": "Ankit Yadav",
@@ -2337,15 +2338,6 @@
           "pinCode": "121001",
           "phone": "09319421847",
           "street": "Housen0-44,sector-56"
-        },
-        {
-          "name": "Ankit Yadav",
-          "email": "ankityadav@gmail.com",
-          "city": "Hisar",
-          "state": "Haryana",
-          "pinCode": "121001",
-          "phone": "09319421847",
-          "street": "Boys Hostel-3"
         }
       ],
       "id": 1
@@ -2353,7 +2345,18 @@
     {
       "email": "testuser2@gmail.com",
       "password": "Qwerty123",
-      "addresses": [],
+      "role": "user",
+      "addresses": [
+        {
+          "name": "Ankit Yadav",
+          "email": "testuser@gmail.com",
+          "city": "Faridabad",
+          "state": "Haryana",
+          "pinCode": "121001",
+          "phone": "09319421847",
+          "street": "Housen0-44,sector-56"
+        }
+      ],
       "id": 2
     }
   ],
@@ -2484,6 +2487,125 @@
       },
       "status": "pending",
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/8/1.jpg",
+            "https://i.dummyjson.com/data/products/8/2.jpg",
+            "https://i.dummyjson.com/data/products/8/3.jpg",
+            "https://i.dummyjson.com/data/products/8/4.jpg",
+            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 1
+        }
+      ],
+      "totalAmount": 1499,
+      "totalItems": 1,
+      "user": {
+        "email": "testuser@gmail.com",
+        "password": "Qwerty123",
+        "addresses": [
+          {
+            "name": "Ankit Yadav",
+            "email": "testuser@gmail.com",
+            "city": "Faridabad",
+            "state": "Haryana",
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Housen0-44,sector-56"
+          },
+          {
+            "name": "Ankit Yadav",
+            "email": "ankityadav@gmail.com",
+            "city": "Hisar",
+            "state": "Haryana",
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Boys Hostel-3"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Ankit Yadav",
+        "email": "testuser@gmail.com",
+        "city": "Faridabad",
+        "state": "Haryana",
+        "pinCode": "121001",
+        "phone": "09319421847",
+        "street": "Housen0-44,sector-56"
+      },
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "email": "testuser2@gmail.com",
+        "password": "Qwerty123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Ankit Yadav",
+            "email": "testuser@gmail.com",
+            "city": "Faridabad",
+            "state": "Haryana",
+            "pinCode": "121001",
+            "phone": "09319421847",
+            "street": "Housen0-44,sector-56"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Ankit Yadav",
+        "email": "testuser@gmail.com",
+        "city": "Faridabad",
+        "state": "Haryana",
+        "pinCode": "121001",
+        "phone": "09319421847",
+        "street": "Housen0-44,sector-56"
+      },
+      "status": "pending",
+      "id": 4
     }
   ]
 }

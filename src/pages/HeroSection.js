@@ -10,8 +10,8 @@ export default function HeroSection() {
           <div className="hidden sm:mb-8 sm:flex sm:justify-center mt-9">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Announcing our next round of funding.{" "}
-              <span className="absolute inset-0" aria-hidden="true" />
-              Read more <span aria-hidden="true">&rarr;</span>
+                <span className="absolute inset-0" aria-hidden="true" />
+                Read more <span aria-hidden="true">&rarr;</span>
             </div>
           </div>
           <div className="text-center">
@@ -25,6 +25,7 @@ export default function HeroSection() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
+                // eslint-disable-next-line
                 href="/"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >

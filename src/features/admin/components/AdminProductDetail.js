@@ -1,7 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/outline";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductByIdAsync, selectProductById } from "../productSlice";
+import { fetchProductByIdAsync, selectProductById } from '../../product/productSlice';
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
@@ -16,7 +16,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProductDetail() {
+export default function  AdminProductDetail() {
   const product = useSelector(selectProductById);
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function ProductDetail() {
 
   const handleCart = (e) => {
     e.preventDefault();
-    const newItem = { ...product,productId:product.id, quantity: 1, user: user.id };
+    const newItem = { ...product, quantity: 1, user: user.id };
     delete newItem["id"];
     dispatch(addToCartAsync(newItem));
   };
@@ -146,6 +146,7 @@ export default function ProductDetail() {
               </div>
 
               <form className="mt-10">
+
                 <button
                   type="submit"
                   onClick={handleCart}

@@ -59,6 +59,9 @@ export default function UserProfile() {
           <h3 className="text-xl my-2 font-bold tracking-tight text-blue-900">
             Email address : {user.email}
           </h3>
+          <h3 className="text-xl my-1 font-bold tracking-tight text-red-900">
+            role : {user.role}
+          </h3>
         </div>
 
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
