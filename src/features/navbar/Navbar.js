@@ -48,11 +48,19 @@ export default function Navbar({ children }) {
                   <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                       <div className="flex-shrink-0">
-                        <Link to="/">
-                          <h1 className="ml-3 text-3xl font-bold text-gray-200 cursor-pointer font-serif hove hover:text-white">
-                            Your Brand
-                          </h1>
-                        </Link>
+                        {userInfo.role === "user" ? (
+                          <Link to="/">
+                            <h1 className="ml-3 text-3xl font-bold text-gray-200 cursor-pointer font-serif hove hover:text-white">
+                              Your Brand
+                            </h1>
+                          </Link>
+                        ) : (
+                          <Link to="/admin">
+                            <h1 className="ml-3 text-3xl font-bold text-gray-200 cursor-pointer font-serif hove hover:text-white">
+                              Your Brand
+                            </h1>
+                          </Link>
+                        )}
                       </div>
                       <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">

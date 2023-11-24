@@ -2336,6 +2336,15 @@
           "city": "Faridabad",
           "state": "Haryana",
           "pinCode": "121001"
+        },
+        {
+          "name": "Ankit Yadav",
+          "email": "ankiityadav.work@gmail.com",
+          "phone": "09319421847",
+          "street": "Sector-51",
+          "city": "Faridabad",
+          "state": "Haryana",
+          "pinCode": "121001"
         }
       ],
       "id": 2
@@ -2357,46 +2366,24 @@
   ],
   "cart": [
     {
-      "title": "HP Pavilion 15-DK1056WM",
-      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
-      "price": 1099,
-      "discountPercentage": 6.18,
-      "rating": 4.43,
-      "stock": 89,
-      "brand": "HP Pavilion",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+      "title": "Huawei P30",
+      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+      "price": 499,
+      "discountPercentage": 10.58,
+      "rating": 4.09,
+      "stock": 32,
+      "brand": "Huawei",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/10/1.jpg",
-        "https://i.dummyjson.com/data/products/10/2.jpg",
-        "https://i.dummyjson.com/data/products/10/3.jpg",
-        "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+        "https://i.dummyjson.com/data/products/5/1.jpg",
+        "https://i.dummyjson.com/data/products/5/2.jpg",
+        "https://i.dummyjson.com/data/products/5/3.jpg"
       ],
-      "productId": 10,
+      "productId": 5,
       "quantity": 1,
       "user": 2,
-      "id": 2
-    },
-    {
-      "title": "MacBook Pro",
-      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": 1749,
-      "discountPercentage": 11.02,
-      "rating": 4.57,
-      "stock": 83,
-      "brand": "Apple",
-      "category": "laptops",
-      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
-      "images": [
-        "https://i.dummyjson.com/data/products/6/1.png",
-        "https://i.dummyjson.com/data/products/6/2.jpg",
-        "https://i.dummyjson.com/data/products/6/3.png",
-        "https://i.dummyjson.com/data/products/6/thumbnail.png"
-      ],
-      "productId": 6,
-      "quantity": 1,
-      "user": 2,
-      "id": 3
+      "id": 1
     }
   ],
   "orders": [
@@ -2589,6 +2576,92 @@
       },
       "status": "Dispatched",
       "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "HP Pavilion 15-DK1056WM",
+          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+          "price": 1099,
+          "discountPercentage": 6.18,
+          "rating": 4.43,
+          "stock": 89,
+          "brand": "HP Pavilion",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+          "images": [
+            "https://i.dummyjson.com/data/products/10/1.jpg",
+            "https://i.dummyjson.com/data/products/10/2.jpg",
+            "https://i.dummyjson.com/data/products/10/3.jpg",
+            "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+          ],
+          "productId": 10,
+          "quantity": 1,
+          "user": 2,
+          "id": 2
+        },
+        {
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": 1749,
+          "discountPercentage": 11.02,
+          "rating": 4.57,
+          "stock": 83,
+          "brand": "Apple",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+          "images": [
+            "https://i.dummyjson.com/data/products/6/1.png",
+            "https://i.dummyjson.com/data/products/6/2.jpg",
+            "https://i.dummyjson.com/data/products/6/3.png",
+            "https://i.dummyjson.com/data/products/6/thumbnail.png"
+          ],
+          "productId": 6,
+          "quantity": 1,
+          "user": 2,
+          "id": 3
+        }
+      ],
+      "totalAmount": 2587,
+      "totalItems": 2,
+      "user": {
+        "email": "testuser2@gmail.com",
+        "password": "Qwerty123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Ankit",
+            "email": "testuser@gmail.com",
+            "phone": "09319421847",
+            "street": "Sector-51",
+            "city": "Faridabad",
+            "state": "Haryana",
+            "pinCode": "121001"
+          },
+          {
+            "name": "Ankit Yadav",
+            "email": "ankiityadav.work@gmail.com",
+            "phone": "09319421847",
+            "street": "Sector-51",
+            "city": "Faridabad",
+            "state": "Haryana",
+            "pinCode": "121001"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Ankit",
+        "email": "testuser@gmail.com",
+        "phone": "09319421847",
+        "street": "Sector-51",
+        "city": "Faridabad",
+        "state": "Haryana",
+        "pinCode": "121001"
+      },
+      "status": "pending",
+      "id": 4
     }
   ]
 }

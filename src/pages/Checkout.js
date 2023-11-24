@@ -324,7 +324,7 @@ function Checkout() {
                     {user.addresses.map((address, index) => (
                       <li
                         key={index}
-                        className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
+                        className="flex justify-between gap-x-6 px-5 py-8 shadow-lg hover:bg-gray-50"
                       >
                         <div className="flex gap-x-4 ">
                           <input
@@ -429,7 +429,7 @@ function Checkout() {
                       aria-hidden="true"
                     />
                   </h1>
-                  <Link to="/">
+                  <Link to="/cart">
                     <div className="flex justify-center items-center px-3 py-3 cursor-pointer hover:bg-slate-100 rounded-lg">
                       <ArrowRightOnRectangleIcon
                         className="inline h-8 w-7 text-blue-900"
@@ -524,7 +524,7 @@ function Checkout() {
                         onClick={handleOrder}
                         className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                       >
-                        Check-Out
+                        Order Now
                       </div>
                     </div>
                   </div>
