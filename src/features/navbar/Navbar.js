@@ -5,10 +5,7 @@ import {
   ShoppingCartIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import Banners from "../../pages/Banners";
-import HeroSection from "../../pages/HeroSection";
 import { Link } from "react-router-dom";
-import ProductList from "../product/components/ProductList";
 import { useSelector } from "react-redux";
 import { selectItems } from "../cart/cartSlice";
 import { selectUserInfo } from "../user/userSlice";
@@ -18,8 +15,8 @@ const navigation = [
   { name: "Home", to: "/", user: true },
   { name: "Recent Orders", to: "/orders", user: true },
   { name: "About", to: "/about-us", user: true },
-  { name: 'Admin', to: '/admin', admin: true },
-
+  { name: "Admin", to: "/admin", admin: true },
+  { name: "Orders", to: "/admin/orders", admin: true },
 ];
 const userNavigation = [
   { name: "Your Profile", link: "/profile" },
@@ -32,10 +29,13 @@ function classNames(...classes) {
 }
 
 export default function Navbar({ children }) {
-  const isProductListPage = children.type === ProductList;
   const items = useSelector(selectItems);
   const userInfo = useSelector(selectUserInfo);
   const user = useSelector(selectLoggedInUser);
+  //  console.log(isProductListPage)
+  const filteredUserNavigation = userNavigation.filter(
+    (item) => item.name !== "My Orders" || user.role !== "admin"
+  );
 
   return (
     <>
@@ -78,21 +78,23 @@ export default function Navbar({ children }) {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-4 flex items-center md:ml-6">
-                        <Link to="/cart">
-                          <button
-                            type="button"
-                            className={`relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none  ${
-                              items.length < 1 ? "cursor-not-allowed" : ""
-                            }`}
-                          >
-                            <span className="absolute -inset-1.5" />
-                            <span className="sr-only">View Cart</span>
-                            <ShoppingCartIcon
-                              className={`h-6 w-6`}
-                              aria-hidden="true"
-                            />
-                          </button>
-                        </Link>
+                        {userInfo.role === "user" && (
+                          <Link to="/cart">
+                            <button
+                              type="button"
+                              className={`relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none  ${
+                                items.length < 1 ? "cursor-not-allowed" : ""
+                              }`}
+                            >
+                              <span className="absolute -inset-1.5" />
+                              <span className="sr-only">View Cart</span>
+                              <ShoppingCartIcon
+                                className={`h-6 w-6`}
+                                aria-hidden="true"
+                              />
+                            </button>
+                          </Link>
+                        )}
 
                         {items.length > 0 && (
                           <span className="inline-flex items-center rounded-md mb-5 -ml-3 z-0 bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
@@ -130,7 +132,7 @@ export default function Navbar({ children }) {
                             leaveTo="transform opacity-0 scale-95"
                           >
                             <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              {userNavigation.map((item) => (
+                              {filteredUserNavigation.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
                                     <Link
@@ -251,8 +253,6 @@ export default function Navbar({ children }) {
               </>
             )}
           </Disclosure>
-          {isProductListPage && <Banners />}
-          <div className="w-full">{isProductListPage && <HeroSection />}</div>
           <main>
             <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
               {children}

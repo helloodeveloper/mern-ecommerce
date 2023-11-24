@@ -1,27 +1,8 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/1/1.jpg",
-        "https://i.dummyjson.com/data/products/1/2.jpg",
-        "https://i.dummyjson.com/data/products/1/3.jpg",
-        "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
-      ],
-      "deleted": true
-    },
-    {
       "id": 2,
-      "title": "iPhone X",
+      "title": "IPhone X",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
       "price": 899,
       "discountPercentage": 17.94,
@@ -103,7 +84,7 @@
         "https://i.dummyjson.com/data/products/6/1.png",
         "https://i.dummyjson.com/data/products/6/2.jpg",
         "https://i.dummyjson.com/data/products/6/3.png",
-        "https://i.dummyjson.com/data/products/6/4.jpg"
+        "https://i.dummyjson.com/data/products/6/thumbnail.png"
       ]
     },
     {
@@ -2348,19 +2329,76 @@
       "role": "user",
       "addresses": [
         {
-          "name": "Ankit Yadav",
+          "name": "Ankit",
           "email": "testuser@gmail.com",
+          "phone": "09319421847",
+          "street": "Sector-51",
           "city": "Faridabad",
           "state": "Haryana",
-          "pinCode": "121001",
-          "phone": "09319421847",
-          "street": "Housen0-44,sector-56"
+          "pinCode": "121001"
         }
       ],
       "id": 2
+    },
+    {
+      "email": "testuser3@gmail.com",
+      "password": "Qwerty123",
+      "addresses": [],
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "ankiityadavv.work@gmail.com",
+      "password": "Qwerty123",
+      "addresses": [],
+      "role": "user",
+      "id": 4
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "HP Pavilion 15-DK1056WM",
+      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+      "price": 1099,
+      "discountPercentage": 6.18,
+      "rating": 4.43,
+      "stock": 89,
+      "brand": "HP Pavilion",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+      "images": [
+        "https://i.dummyjson.com/data/products/10/1.jpg",
+        "https://i.dummyjson.com/data/products/10/2.jpg",
+        "https://i.dummyjson.com/data/products/10/3.jpg",
+        "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+      ],
+      "productId": 10,
+      "quantity": 1,
+      "user": 2,
+      "id": 2
+    },
+    {
+      "title": "MacBook Pro",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "price": 1749,
+      "discountPercentage": 11.02,
+      "rating": 4.57,
+      "stock": 83,
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/2.jpg",
+        "https://i.dummyjson.com/data/products/6/3.png",
+        "https://i.dummyjson.com/data/products/6/thumbnail.png"
+      ],
+      "productId": 6,
+      "quantity": 1,
+      "user": 2,
+      "id": 3
+    }
+  ],
   "orders": [
     {
       "items": [
@@ -2380,16 +2418,18 @@
             "https://i.dummyjson.com/data/products/7/3.jpg",
             "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
           ],
+          "productId": 7,
           "quantity": 1,
-          "user": 1,
+          "user": 2,
           "id": 1
         }
       ],
-      "totalAmount": 1499,
+      "totalAmount": 1437,
       "totalItems": 1,
       "user": {
-        "email": "testuser@gmail.com",
+        "email": "testuser2@gmail.com",
         "password": "Qwerty123",
+        "role": "user",
         "addresses": [
           {
             "name": "Ankit Yadav",
@@ -2399,20 +2439,11 @@
             "pinCode": "121001",
             "phone": "09319421847",
             "street": "Housen0-44,sector-56"
-          },
-          {
-            "name": "Ankit Yadav",
-            "email": "ankityadav@gmail.com",
-            "city": "Hisar",
-            "state": "Haryana",
-            "pinCode": "121001",
-            "phone": "09319421847",
-            "street": "Boys Hostel-3"
           }
         ],
-        "id": 1
+        "id": 2
       },
-      "paymentMethod": "cash",
+      "paymentMethod": "card",
       "selectedAddress": {
         "name": "Ankit Yadav",
         "email": "testuser@gmail.com",
@@ -2422,140 +2453,13 @@
         "phone": "09319421847",
         "street": "Housen0-44,sector-56"
       },
-      "status": "pending",
+      "status": "Delivered",
       "id": 1
     },
     {
       "items": [
         {
-          "title": "Samsung Galaxy Book",
-          "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-          "price": 1499,
-          "discountPercentage": 4.15,
-          "rating": 4.25,
-          "stock": 50,
-          "brand": "Samsung",
-          "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/7/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/7/1.jpg",
-            "https://i.dummyjson.com/data/products/7/2.jpg",
-            "https://i.dummyjson.com/data/products/7/3.jpg",
-            "https://i.dummyjson.com/data/products/7/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 1499,
-      "totalItems": 1,
-      "user": {
-        "email": "testuser@gmail.com",
-        "password": "Qwerty123",
-        "addresses": [
-          {
-            "name": "Ankit Yadav",
-            "email": "testuser@gmail.com",
-            "city": "Faridabad",
-            "state": "Haryana",
-            "pinCode": "121001",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56"
-          },
-          {
-            "name": "Ankit Yadav",
-            "email": "ankityadav@gmail.com",
-            "city": "Hisar",
-            "state": "Haryana",
-            "pinCode": "121001",
-            "phone": "09319421847",
-            "street": "Boys Hostel-3"
-          }
-        ],
-        "id": 1
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": {
-        "name": "Ankit Yadav",
-        "email": "testuser@gmail.com",
-        "city": "Faridabad",
-        "state": "Haryana",
-        "pinCode": "121001",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56"
-      },
-      "status": "pending",
-      "id": 2
-    },
-    {
-      "items": [
-        {
-          "title": "Microsoft Surface Laptop 4",
-          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
-          "price": 1499,
-          "discountPercentage": 10.23,
-          "rating": 4.43,
-          "stock": 68,
-          "brand": "Microsoft Surface",
-          "category": "laptops",
-          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/8/1.jpg",
-            "https://i.dummyjson.com/data/products/8/2.jpg",
-            "https://i.dummyjson.com/data/products/8/3.jpg",
-            "https://i.dummyjson.com/data/products/8/4.jpg",
-            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
-          ],
-          "quantity": 1,
-          "user": 1,
-          "id": 1
-        }
-      ],
-      "totalAmount": 1499,
-      "totalItems": 1,
-      "user": {
-        "email": "testuser@gmail.com",
-        "password": "Qwerty123",
-        "addresses": [
-          {
-            "name": "Ankit Yadav",
-            "email": "testuser@gmail.com",
-            "city": "Faridabad",
-            "state": "Haryana",
-            "pinCode": "121001",
-            "phone": "09319421847",
-            "street": "Housen0-44,sector-56"
-          },
-          {
-            "name": "Ankit Yadav",
-            "email": "ankityadav@gmail.com",
-            "city": "Hisar",
-            "state": "Haryana",
-            "pinCode": "121001",
-            "phone": "09319421847",
-            "street": "Boys Hostel-3"
-          }
-        ],
-        "id": 1
-      },
-      "paymentMethod": "cash",
-      "selectedAddress": {
-        "name": "Ankit Yadav",
-        "email": "testuser@gmail.com",
-        "city": "Faridabad",
-        "state": "Haryana",
-        "pinCode": "121001",
-        "phone": "09319421847",
-        "street": "Housen0-44,sector-56"
-      },
-      "status": "pending",
-      "id": 3
-    },
-    {
-      "items": [
-        {
-          "title": "iPhone X",
+          "title": "IPhone X",
           "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
           "price": 899,
           "discountPercentage": 17.94,
@@ -2570,12 +2474,13 @@
             "https://i.dummyjson.com/data/products/2/3.jpg",
             "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
           ],
+          "productId": 2,
           "quantity": 1,
           "user": 2,
           "id": 1
         }
       ],
-      "totalAmount": 899,
+      "totalAmount": 738,
       "totalItems": 1,
       "user": {
         "email": "testuser2@gmail.com",
@@ -2605,7 +2510,85 @@
         "street": "Housen0-44,sector-56"
       },
       "status": "pending",
-      "id": 4
+      "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "HP Pavilion 15-DK1056WM",
+          "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+          "price": 1099,
+          "discountPercentage": 6.18,
+          "rating": 4.43,
+          "stock": 89,
+          "brand": "HP Pavilion",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/10/thumbnail.jpeg",
+          "images": [
+            "https://i.dummyjson.com/data/products/10/1.jpg",
+            "https://i.dummyjson.com/data/products/10/2.jpg",
+            "https://i.dummyjson.com/data/products/10/3.jpg",
+            "https://i.dummyjson.com/data/products/10/thumbnail.jpeg"
+          ],
+          "productId": 10,
+          "quantity": 1,
+          "user": 2,
+          "id": 1
+        },
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/8/1.jpg",
+            "https://i.dummyjson.com/data/products/8/2.jpg",
+            "https://i.dummyjson.com/data/products/8/3.jpg",
+            "https://i.dummyjson.com/data/products/8/4.jpg",
+            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+          ],
+          "productId": 8,
+          "quantity": 1,
+          "user": 2,
+          "id": 2
+        }
+      ],
+      "totalAmount": 2377,
+      "totalItems": 2,
+      "user": {
+        "email": "testuser2@gmail.com",
+        "password": "Qwerty123",
+        "role": "user",
+        "addresses": [
+          {
+            "name": "Ankit",
+            "email": "testuser@gmail.com",
+            "phone": "09319421847",
+            "street": "Sector-51",
+            "city": "Faridabad",
+            "state": "Haryana",
+            "pinCode": "121001"
+          }
+        ],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Ankit",
+        "email": "testuser@gmail.com",
+        "phone": "09319421847",
+        "street": "Sector-51",
+        "city": "Faridabad",
+        "state": "Haryana",
+        "pinCode": "121001"
+      },
+      "status": "Dispatched",
+      "id": 3
     }
   ]
 }

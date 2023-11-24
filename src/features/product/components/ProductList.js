@@ -1,9 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import {
   fetchBrandsAsync,
   fetchCategoriesAsync,
-  // fetchAllProductsAsync,
   fetchProductsByFiltersAsync,
   selectAllProducts,
   selectBrands,
@@ -20,8 +18,10 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
-import { ITEMS_PER_PAGE } from "../../../app/constants";
 import { Link } from "react-router-dom";
+import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
+import Pagination from "../../common/Pagination";
+import LandingPage from "../../../pages/LandingPage";
 
 const sortOptions = [
   { name: "Price: Low to High", sort: "price", order: "asc", current: false },
@@ -38,6 +38,7 @@ export default function ProductList() {
   const products = useSelector(selectAllProducts);
   const categories = useSelector(selectCategories);
   const brands = useSelector(selectBrands);
+
   const filters = [
     {
       id: "category",
@@ -102,8 +103,9 @@ export default function ProductList() {
   }, [dispatch]);
 
   return (
-    <div>
-      <div className="bg-white rounded-lg justify-items-center">
+    <>
+      <LandingPage />
+      <div className="bg-white rounded-lg justify-items-center mt-4 shadow-2xl ">
         <div>
           {/* Mobile filter dialog */}
           <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -218,9 +220,9 @@ export default function ProductList() {
             </Dialog>
           </Transition.Root>
 
-          <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 rounded-lg">
-            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-8">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+          <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 rounded-lg py-2">
+            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-4">
+              <h1 className="text-4xl font-bold tracking-tight font-serif text-gray-900">
                 All Products
               </h1>
 
@@ -366,7 +368,7 @@ export default function ProductList() {
                         Products
                       </h2> */}
 
-                      <div className=" mt-6 ml-0 grid grid-cols-1 gap-x-2 gap-y-10 items-center justify-center sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8">
+                      <div className=" mt-2 ml-0 grid grid-cols-1 gap-x-6 gap-y-10 items-center justify-center sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8">
                         {products.map((product) => (
                           <Link
                             to={`/product-detail/${product.id}`}
@@ -404,11 +406,7 @@ export default function ProductList() {
                                 </div>
                                 <div>
                                   <p className="mt-1 text-sm font-medium text-gray-900">
-                                    $
-                                    {Math.round(
-                                      product.price *
-                                        (1 - product.discountPercentage / 100)
-                                    )}
+                                    ${discountedPrice(product)}
                                   </p>
                                   <p className="-mt-1 text-sm font-medium text-gray-400 line-through">
                                     ${product.price}
@@ -418,7 +416,14 @@ export default function ProductList() {
                               {product.deleted && (
                                 <div>
                                   <p className="text-sm text-red-400">
-                                    product deleted
+                                    Product Deleted
+                                  </p>
+                                </div>
+                              )}
+                              {product.stock <= 0 && (
+                                <div>
+                                  <p className="text-sm text-red-400">
+                                    Out of stock
                                   </p>
                                 </div>
                               )}
@@ -441,92 +446,6 @@ export default function ProductList() {
           </main>
         </div>
       </div>
-    </div>
-  );
-}
-
-function Pagination({ page, setPage, handlePage, totalItems }) {
-  const totalPages = totalItems / ITEMS_PER_PAGE;
-  return (
-    <div className="flex items-center justify-between rounded-lg bg-gray-100 border-gray-200  px-2 py-2 sm:px-6 ">
-      <div className="flex flex-1 justify-between sm:hidden">
-        <div
-          onClick={(e) => handlePage(1 < page ? page - 1 : page)}
-          className={`${
-            page > 1 ? "cursor-pointer" : "cursor-not-allowed"
-          } relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
-        >
-          Previous
-        </div>
-        <div
-          onClick={(e) => handlePage(totalPages > page ? page + 1 : page)}
-          className={`${
-            totalPages > page ? "cursor-pointer" : "cursor-not-allowed"
-          } relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50`}
-        >
-          Next
-        </div>
-      </div>
-      <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p className="text-md text-gray-700">
-            Showing{" "}
-            <span className="font-medium">
-              {(page - 1) * ITEMS_PER_PAGE + 1}
-            </span>{" "}
-            to{" "}
-            <span className="font-medium">
-              {page * ITEMS_PER_PAGE > totalItems
-                ? totalItems
-                : page * ITEMS_PER_PAGE}
-            </span>{" "}
-            of <span className="font-medium">{totalItems}</span> results
-          </p>
-        </div>
-        <div>
-          <nav
-            className="isolate inline-flex -space-x-px rounded-md shadow-sm"
-            aria-label="Pagination"
-          >
-            <div
-              onClick={(e) => handlePage(1 < page ? page - 1 : page)}
-              className={`${
-                page > 1 ? "cursor-pointer" : "cursor-not-allowed"
-              } relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
-            >
-              <span className="sr-only">Previous</span>
-              <ChevronLeftIcon
-                className="h-5 w-5 font-semibold"
-                aria-hidden="true"
-              />
-            </div>
-            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
-            {Array.from({ length: Math.ceil(totalPages) }).map((el, index) => (
-              <div
-                onClick={(e) => handlePage(index + 1)}
-                aria-current="page"
-                className={`relative cursor-pointer z-10 inline-flex items-center ${
-                  index + 1 === page
-                    ? "bg-indigo-600 text-white"
-                    : "text-gray-400"
-                } px-4 py-2 text-sm font-semibold  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-              >
-                {index + 1}
-              </div>
-            ))}
-
-            <div
-              onClick={(e) => handlePage(totalPages > page ? page + 1 : page)}
-              className={`${
-                page < totalPages ? "cursor-pointer" : "cursor-not-allowed"
-              } relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
-            >
-              <span className="sr-only">Next</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </div>
-          </nav>
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

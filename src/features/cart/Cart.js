@@ -7,13 +7,17 @@ import {
 import { Link } from "react-router-dom";
 import { HomeIcon, ShoppingBagIcon } from "@heroicons/react/20/solid";
 import { Navigate } from "react-router-dom";
+import { discountedPrice } from "../../app/constants";
+import { useState } from "react";
+import Modal from "../common/Modal";
 
 export default function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(selectItems);
+  const [openModal, setOpenModal] = useState(null);
 
   const totalAmount = items.reduce(
-    (amount, item) => item.price * item.quantity + amount,
+    (amount, item) => discountedPrice(item) * item.quantity + amount,
     0
   );
   const totalItems = items.reduce((total, item) => item.quantity + total, 0);
@@ -69,7 +73,7 @@ export default function Cart() {
                         <h3>
                           <a href={item.href}>{item.title}</a>
                         </h3>
-                        <p className="ml-4">${item.price}</p>
+                        <p className="ml-4">${discountedPrice(item)}</p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">{item.brand}</p>
                     </div>
@@ -95,8 +99,20 @@ export default function Cart() {
                       </div>
 
                       <div className="flex">
+                        <Modal
+                          title={`Delete ${item.title}`}
+                          message="Are you sure you want to delete this Cart item ?"
+                          dangerOption="Delete"
+                          cancelOption="Cancel"
+                          dangerAction={(e) => handleRemove(e, item.id)}
+                          cancelAction={() => setOpenModal(null)}
+                          showModal={openModal === item.id}
+                        ></Modal>
+
                         <button
-                          onClick={(e) => handleRemove(e, item.id)}
+                          onClick={(e) => {
+                            setOpenModal(item.id);
+                          }}
                           type="button"
                           className="font-medium text-indigo-600 hover:text-indigo-500"
                         >

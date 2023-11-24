@@ -20,14 +20,14 @@ export default function Login() {
     <>
       {user && <Navigate to="/" replace={true}></Navigate>}
 
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 ">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-20 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-12 py-12 lg:px-8 ">
+      
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white shadow-2xl rounded-md rounded-b-none mt-20 ">
+          <h2 className=" py-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>
         </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className=" sm:mx-auto sm:w-full sm:max-w-sm bg-white shadow-2xl px-4 py-4 rounded-md rounded-t-none">
           <form
             noValidate
             onSubmit={handleSubmit((data) => {
@@ -50,6 +50,7 @@ export default function Login() {
                   {...register("email", {
                     required: "email is required",
                     pattern: {
+                       // eslint-disable-next-line
                       value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
                       message: "email not valid",
                     },
@@ -75,7 +76,7 @@ export default function Login() {
                 </label>
                 <div className="text-sm">
                   <Link
-                    to="forgot-password"
+                    to="/forgot-password"
                     className="font-semibold text-indigo-600 hover:text-indigo-500"
                   >
                     Forgot password?
@@ -126,6 +127,7 @@ export default function Login() {
           </p>
         </div>
       </div>
+  
     </>
   );
 }

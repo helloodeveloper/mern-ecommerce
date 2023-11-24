@@ -4,7 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import Home from "./pages/Home";
 import Notfound from "./pages/Notfound";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CartPage from "./pages/CartPage";
 import Checkout from "./pages/Checkout";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -23,6 +23,16 @@ import ProtectedAdmin from "./features/auth/components/ProtectedAdmin";
 import AdminHome from "./pages/AdminHome";
 import AdminProductDetailPage from "./pages/AdminProductDetailPage";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
+import AdminOrdersPage from "./pages/AdminOrdersPage";
+import { positions,transitions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  timeout: 2000,
+  position: positions.TOP_CENTER,
+  offset: '30px',
+  transition: transitions.SCALE,
+};
 
 const router = createBrowserRouter([
   {
@@ -65,6 +75,15 @@ const router = createBrowserRouter([
       </ProtectedAdmin>
     ),
   },
+  {
+    path: "/admin/orders",
+    element: (
+      <ProtectedAdmin>
+        <AdminOrdersPage></AdminOrdersPage>
+      </ProtectedAdmin>
+    ),
+  },
+
   {
     path: "/",
     element: (
@@ -142,8 +161,9 @@ function App() {
   return (
     <>
       <div className="App">
-        <RouterProvider router={router} />
-        {/* Link must be inside the Provider */}
+        <Provider template={AlertTemplate} {...options}>
+          <RouterProvider router={router} />
+        </Provider>
       </div>
     </>
   );

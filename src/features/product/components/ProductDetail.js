@@ -3,8 +3,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductByIdAsync, selectProductById } from "../productSlice";
 import { useParams } from "react-router-dom";
-import { addToCartAsync } from "../../cart/cartSlice";
+import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
+import { discountedPrice } from "../../../app/constants";
+import { useAlert } from "react-alert";
 
 const highlights = [
   "Hand cut and sewn locally",
@@ -21,19 +23,36 @@ export default function ProductDetail() {
   const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const params = useParams();
+  const items = useSelector(selectItems);
+  const alert = useAlert();
 
   const handleCart = (e) => {
     e.preventDefault();
-    const newItem = { ...product,productId:product.id, quantity: 1, user: user.id };
-    delete newItem["id"];
-    dispatch(addToCartAsync(newItem));
+    if (user.role !== "admin") {
+      // Add this conditional check
+      if (items.findIndex((item) => item.productId === product.id) < 0) {
+        //   console.log({ items, product });
+        const newItem = {
+          ...product,
+          productId: product.id,
+          quantity: 1,
+          user: user.id,
+        };
+        delete newItem["id"];
+        dispatch(addToCartAsync(newItem));
+        // TODO: it will be based on server response of backend
+        alert.success("Item added to Cart");
+      } else {
+        alert.error("Item Already added");
+      }
+    }
   };
 
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
   return (
-    <div className="bg-white">
+    <div className="bg-white shadow-2xl">
       {product ? (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
@@ -75,8 +94,8 @@ export default function ProductDetail() {
           </nav>
 
           {/* Image gallery */}
-          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-            <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block border border-gray-100 bg-gray-100 shadow-lg">
+          <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8 ">
+            <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block border border-gray-100 bg-gray-100 shadow-2xl">
               <img
                 src={product.images[0]}
                 alt={product.title}
@@ -119,8 +138,11 @@ export default function ProductDetail() {
             {/* Options */}
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
+              <p className="text-xl line-through tracking-tight text-gray-900">
+                ${product.price}
+              </p>
               <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+                ${discountedPrice(product)}
               </p>
 
               {/* Reviews */}
@@ -149,7 +171,10 @@ export default function ProductDetail() {
                 <button
                   type="submit"
                   onClick={handleCart}
-                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className={`mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
+                    user.role === "admin" ? "cursor-not-allowed opacity-50" : ""
+                  }`}
+                  disabled={user.role === "admin"} // Disable the button based on the user's role
                 >
                   Add to Cart
                 </button>
