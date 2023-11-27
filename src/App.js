@@ -118,16 +118,28 @@ const router = createBrowserRouter([
   },
   {
     path: "/order-success/:id",
-    element: <OrderSuccessPage />,
+    element: (
+      <Protected>
+        <OrderSuccessPage></OrderSuccessPage>{' '}
+      </Protected>
+    ),
   },
   {
-    path: "/orders",
-    element: <UserOrdersPage />,
+    path: "/orders",    
+    element: (
+      <Protected>
+        <UserOrdersPage></UserOrdersPage>{' '}
+      </Protected>
+    ),
     // we will add Page later right now using component directly.
   },
   {
     path: "/profile",
-    element: <UserProfilePage />,
+    element: (
+      <Protected>
+        <UserProfilePage></UserProfilePage>{' '}
+      </Protected>
+    ),
   },
   {
     path: "/logout",

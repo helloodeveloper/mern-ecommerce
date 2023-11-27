@@ -87,27 +87,29 @@ export default function Navbar({ children }) {
                     <div className="hidden md:block">
                       <div className="ml-4 flex items-center md:ml-6">
                         {userInfo.role === "user" && (
-                          <Link to="/cart">
-                            <button
-                              type="button"
-                              className={`relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none  ${
-                                items.length < 1 ? "cursor-not-allowed" : ""
-                              }`}
-                            >
-                              <span className="absolute -inset-1.5" />
-                              <span className="sr-only">View Cart</span>
-                              <ShoppingCartIcon
-                                className={`h-6 w-6`}
-                                aria-hidden="true"
-                              />
-                            </button>
-                          </Link>
-                        )}
+                          <>
+                            <Link to="/cart">
+                              <button
+                                type="button"
+                                className={`relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none  ${
+                                  items.length < 1 ? "cursor-not-allowed" : ""
+                                }`}
+                              >
+                                <span className="absolute -inset-1.5" />
+                                <span className="sr-only">View Cart</span>
+                                <ShoppingCartIcon
+                                  className={`h-6 w-6`}
+                                  aria-hidden="true"
+                                />
+                              </button>
+                            </Link>
 
-                        {items.length > 0 && (
-                          <span className="inline-flex items-center rounded-md mb-5 -ml-3 z-0 bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                            {items.length}
-                          </span>
+                            {items.length > 0 && (
+                              <span className="inline-flex items-center rounded-md mb-5 -ml-3 z-0 bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                {items.length}
+                              </span>
+                            )}
+                          </>
                         )}
                         {/* Profile dropdown */}
                         <Menu as="div" className="relative ml-3">

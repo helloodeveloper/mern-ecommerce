@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
+  const userInfo = useSelector(selectUserInfo);
   const [selectedEditIndex, setSelectedEditIndex] = useState(-1);
   const [showAddAddressForm, setShowAddAddressForm] = useState(false);
 
@@ -20,20 +20,20 @@ export default function UserProfile() {
   } = useForm();
 
   const handleEdit = (addressUpdate, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] }; // for shallow copy issue
+    const newUser = { ...userInfo, addresses: [...userInfo.addresses] }; // for shallow copy issue
     newUser.addresses.splice(index, 1, addressUpdate);
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
   };
   const handleRemove = (e, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] }; // for shallow copy issue
+    const newUser = { ...userInfo, addresses: [...userInfo.addresses] }; // for shallow copy issue
     newUser.addresses.splice(index, 1);
     dispatch(updateUserAsync(newUser));
   };
 
   const handleEditForm = (index) => {
     setSelectedEditIndex(index);
-    const address = user.addresses[index];
+    const address = userInfo.addresses[index];
     setValue("name", address.name);
     setValue("email", address.email);
     setValue("city", address.city);
@@ -44,24 +44,33 @@ export default function UserProfile() {
   };
 
   const handleAdd = (address) => {
-    const newUser = { ...user, addresses: [...user.addresses, address] };
+    const newUser = {
+      ...userInfo,
+      addresses: [...userInfo.addresses, address],
+    };
     dispatch(updateUserAsync(newUser));
     setShowAddAddressForm(false);
   };
 
   return (
     <div>
-      {user.role === "user" && (
+      {userInfo.role === "user" && (
         <div className="mx-auto mt-4 shadow-lg bg-white max-w-7xl px-4 sm:px-6 lg:px-8 rounded-xl">
-          <div className="shadow-sm rounded-b-md border-t border-gray-200 px-4 py-6 sm:px-6">
+          <div className="shadow-sm rounded-b-md border-t border-gray-200 px-4 py-2 sm:px-6">
             <h1 className="text-2xl my-2 font-bold tracking-tight text-green-900">
               Login Info:
             </h1>
+            <h3 className="text-xl font-bold tracking-tight text-blue-950 ">
+              Name:{" "}
+              {userInfo.addresses.length > 0 && userInfo.addresses[0].name
+                ? userInfo.addresses[0].name
+                : "New User"}
+            </h3>
             <h3 className="text-xl my-2 font-bold tracking-tight text-blue-900">
-              Email address : {user.email}
+              Email address : {userInfo.email}
             </h3>
             <h3 className="text-xl my-1 font-bold tracking-tight text-red-900">
-              Role : {user.role}
+              Role : {userInfo.role}
             </h3>
           </div>
 
@@ -285,8 +294,8 @@ export default function UserProfile() {
                 Your Addresses :
               </p>
             ) : null}
-            {user.addresses.map((address, index) => (
-              <div>
+            {userInfo.addresses.map((address, index) => (
+              <div key={index}>
                 {selectedEditIndex === index ? (
                   <form
                     className="bg-white px-5 py-12 mt-0 border-t-2"
@@ -541,23 +550,21 @@ export default function UserProfile() {
         </div>
       )}
 
-{user.role === "admin" && (
-  <div className="mx-auto mt-4 shadow-lg bg-white max-w-7xl px-4 sm:px-6 lg:px-8 rounded-xl">
+      {userInfo.role === "admin" && (
+        <div className="mx-auto mt-4 shadow-lg bg-white max-w-7xl px-4 sm:px-6 lg:px-8 rounded-xl">
           <div className="shadow-sm rounded-b-md border-t border-gray-200 px-4 py-6 sm:px-6">
             <h1 className="text-2xl my-2 font-bold tracking-tight text-green-900">
               Login Info:
             </h1>
             <h3 className="text-xl my-2 font-bold tracking-tight text-blue-900">
-              Email address : {user.email}
+              Email address : {userInfo.email}
             </h3>
             <h3 className="text-xl my-1 font-bold tracking-tight text-red-900">
-              Role : {user.role}
+              Role : {userInfo.role}
             </h3>
           </div>
-          </div>
-)}
-
-</div>
-    
+        </div>
+      )}
+    </div>
   );
 }

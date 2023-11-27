@@ -87,7 +87,7 @@ export default function ProductList() {
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination, admin:true }));
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {
@@ -370,10 +370,9 @@ export default function ProductList() {
 
                       <div className=" mt-2 ml-0 grid grid-cols-1 gap-x-6 gap-y-10 items-center justify-center sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8">
                         {products.map((product) => (
-                          <div>
+                          <div key={product.id}>
                             <Link
                               to={`/product-detail/${product.id}`}
-                              key={product.id}
                             >
                               <div
                                 key={product.id}

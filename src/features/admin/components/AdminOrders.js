@@ -72,21 +72,9 @@ function AdminOrders() {
               <thead>
                 <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                   <th
-                    className="py-3 px-6 text-left cursor-pointer"
-                    onClick={(e) =>
-                      handleSort({
-                        sort: "id",
-                        order: sort?._order === "asc" ? "desc" : "asc",
-                      })
-                    }
+                    className="py-3 px-6 text-left"
                   >
                     Order#{" "}
-                    {sort._sort === "id" &&
-                      (sort._order === "asc" ? (
-                        <ArrowUpIcon className="w-4 h-4 inline"></ArrowUpIcon>
-                      ) : (
-                        <ArrowDownIcon className="w-4 h-4 inline"></ArrowDownIcon>
-                      ))}
                   </th>
                   <th className="py-3 px-6 text-left">Items</th>
                   <th
@@ -113,7 +101,7 @@ function AdminOrders() {
               </thead>
               <tbody className="text-gray-600 shadow-2xl">
                 {orders.map((order) => (
-                  <tr className="border-b border-gray-200 hover:bg-gray-100">
+                  <tr key={order.id} className="border-b border-gray-200 hover:bg-gray-100">
                     <td className="py-3 px-6 text-left whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="mr-2"></div>
@@ -121,13 +109,13 @@ function AdminOrders() {
                       </div>
                     </td>
                     <td className="py-3 px-6 text-left">
-                      {order.items.map((item) => (
-                        <div className="flex-col items-center">
+                    {order.items.map((item, index) => (
+                        <div key={index}  className="flex-col text-center items-center">
                           <span className="font-bold ">
-                            {item.title}  
+                            {item.product.title}  
                           </span>
                           <div className="font-serif"> Discounted Price: $
-                            {discountedPrice(item)}</div>
+                            {discountedPrice(item.product)}</div>
                           <div className="font-semibold">Qty: #{item.quantity} </div>
                         </div>
                       ))}
@@ -149,7 +137,7 @@ function AdminOrders() {
                     </td>
                     <td className="py-3 px-6 text-center">
                       {order.id === editableOrderId ? (
-                        <select onChange={(e) => handleUpdate(e, order)} className="cursor-pointer" >
+                        <select onChange={(e) => handleUpdate(e, order)} className="cursor-pointer rounded-lg items-center text-center" >
                           <option value="pending">Pending</option>
                           <option value="Dispatched">Dispatched</option>
                           <option value="Delivered">Delivered</option>

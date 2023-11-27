@@ -73,7 +73,7 @@
       "id": 6,
       "title": "MacBook Pro",
       "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
-      "price": 1749,
+      "price": 1800,
       "discountPercentage": 11.02,
       "rating": 4.57,
       "stock": 83,
@@ -2307,13 +2307,13 @@
   ],
   "users": [
     {
-      "email": "testuser@gmail.com",
+      "email": "admin@gmail.com",
       "password": "Qwerty123",
       "role": "admin",
       "addresses": [
         {
           "name": "Ankit Yadav",
-          "email": "testuser@gmail.com",
+          "email": "admin@gmail.com",
           "city": "Faridabad",
           "state": "Haryana",
           "pinCode": "121001",
@@ -2324,44 +2324,28 @@
       "id": 1
     },
     {
-      "email": "testuser2@gmail.com",
-      "password": "Qwerty123",
-      "role": "user",
-      "addresses": [
-        {
-          "name": "Ankit",
-          "email": "testuser@gmail.com",
-          "phone": "09319421847",
-          "street": "Sector-51",
-          "city": "Faridabad",
-          "state": "Haryana",
-          "pinCode": "121001"
-        },
-        {
-          "name": "Ankit Yadav",
-          "email": "ankiityadav.work@gmail.com",
-          "phone": "09319421847",
-          "street": "Sector-51",
-          "city": "Faridabad",
-          "state": "Haryana",
-          "pinCode": "121001"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "email": "testuser3@gmail.com",
-      "password": "Qwerty123",
-      "addresses": [],
-      "role": "user",
-      "id": 3
-    },
-    {
       "email": "ankiityadavv.work@gmail.com",
       "password": "Qwerty123",
       "addresses": [],
       "role": "user",
       "id": 4
+    },
+    {
+      "email": "ankit9319421847@gmail.com",
+      "password": "Qwerty123",
+      "addresses": [
+        {
+          "name": "Manoj",
+          "email": "ankit9319421847@gmail.com",
+          "phone": "09319421847",
+          "street": "v, D C-129, DABUA COLONY, Faridabad, Faridabad, Haryana",
+          "city": "FARIDABAD",
+          "state": "HARYANA",
+          "pinCode": "121001"
+        }
+      ],
+      "role": "user",
+      "id": 5
     }
   ],
   "cart": [
@@ -2384,6 +2368,28 @@
       "quantity": 1,
       "user": 2,
       "id": 1
+    },
+    {
+      "title": "Infinix INBOOK",
+      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+      "price": 1099,
+      "discountPercentage": 11.83,
+      "rating": 4.54,
+      "stock": 96,
+      "brand": "Infinix",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/9/1.jpg",
+        "https://i.dummyjson.com/data/products/9/2.png",
+        "https://i.dummyjson.com/data/products/9/3.png",
+        "https://i.dummyjson.com/data/products/9/4.jpg",
+        "https://i.dummyjson.com/data/products/9/thumbnail.jpg"
+      ],
+      "productId": 9,
+      "quantity": 1,
+      "user": 5,
+      "id": 3
     }
   ],
   "orders": [
@@ -2662,6 +2668,120 @@
       },
       "status": "pending",
       "id": 4
+    },
+    {
+      "items": [
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/8/1.jpg",
+            "https://i.dummyjson.com/data/products/8/2.jpg",
+            "https://i.dummyjson.com/data/products/8/3.jpg",
+            "https://i.dummyjson.com/data/products/8/4.jpg",
+            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+          ],
+          "productId": 8,
+          "quantity": 2,
+          "user": 5,
+          "id": 2
+        }
+      ],
+      "totalAmount": 2692,
+      "totalItems": 2,
+      "user": {
+        "email": "ankit9319421847@gmail.com",
+        "password": "Qwerty123",
+        "addresses": [
+          {
+            "name": "Manoj",
+            "email": "ankit9319421847@gmail.com",
+            "phone": "09319421847",
+            "street": "v, D C-129, DABUA COLONY, Faridabad, Faridabad, Haryana",
+            "city": "FARIDABAD",
+            "state": "HARYANA",
+            "pinCode": "121001"
+          }
+        ],
+        "role": "user",
+        "id": 5
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Manoj",
+        "email": "ankit9319421847@gmail.com",
+        "phone": "09319421847",
+        "street": "v, D C-129, DABUA COLONY, Faridabad, Faridabad, Haryana",
+        "city": "FARIDABAD",
+        "state": "HARYANA",
+        "pinCode": "121001"
+      },
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "items": [
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/8/1.jpg",
+            "https://i.dummyjson.com/data/products/8/2.jpg",
+            "https://i.dummyjson.com/data/products/8/3.jpg",
+            "https://i.dummyjson.com/data/products/8/4.jpg",
+            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+          ],
+          "productId": 8,
+          "quantity": 1,
+          "user": 5,
+          "id": 2
+        }
+      ],
+      "totalAmount": 1346,
+      "totalItems": 1,
+      "user": {
+        "email": "ankit9319421847@gmail.com",
+        "password": "Qwerty123",
+        "addresses": [
+          {
+            "name": "Manoj",
+            "email": "ankit9319421847@gmail.com",
+            "phone": "09319421847",
+            "street": "v, D C-129, DABUA COLONY, Faridabad, Faridabad, Haryana",
+            "city": "FARIDABAD",
+            "state": "HARYANA",
+            "pinCode": "121001"
+          }
+        ],
+        "role": "user",
+        "id": 5
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Manoj",
+        "email": "ankit9319421847@gmail.com",
+        "phone": "09319421847",
+        "street": "v, D C-129, DABUA COLONY, Faridabad, Faridabad, Haryana",
+        "city": "FARIDABAD",
+        "state": "HARYANA",
+        "pinCode": "121001"
+      },
+      "status": "Delivered",
+      "id": 6
     }
   ]
 }
