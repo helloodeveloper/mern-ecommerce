@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductByIdAsync, selectProductById } from "../productSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
-import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../app/constants";
 import { useAlert } from "react-alert";
+import { selectUserInfo } from "../../user/userSlice";
 
 const highlights = [
   "Hand cut and sewn locally",
@@ -20,22 +20,21 @@ function classNames(...classes) {
 
 export default function ProductDetail() {
   const product = useSelector(selectProductById);
-  const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const params = useParams();
   const items = useSelector(selectItems);
   const alert = useAlert();
+  const userInfo = useSelector(selectUserInfo);
 
   const handleCart = (e) => {
     e.preventDefault();
-    if (user.role !== "admin") {
+    if (userInfo.role !== "admin") {
       // Add this conditional check
       if (items.findIndex((item) => item.product.id === product.id) < 0) {
         //   console.log({ items, product });
         const newItem = {
           product: product.id,
-          quantity: 1,
-          user: user.id,
+          quantity: 1
         };
         dispatch(addToCartAsync(newItem));
         // TODO: it will be based on server response of backend
@@ -170,9 +169,9 @@ export default function ProductDetail() {
                   type="submit"
                   onClick={handleCart}
                   className={`mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${
-                    user.role === "admin" ? "cursor-not-allowed opacity-50" : ""
+                    userInfo.role === "admin" ? "cursor-not-allowed opacity-50" : ""
                   }`}
-                  disabled={user.role === "admin"} // Disable the button based on the user's role
+                  disabled={userInfo.role === "admin"} // Disable the button based on the userInfo's role
                 >
                   Add to Cart
                 </button>

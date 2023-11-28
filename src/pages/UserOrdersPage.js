@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
 import NavBar from "../features/navbar/Navbar";
 import UserOrders from "../features/user/components/UserOrders";
+import { selectUserOrders } from "../features/user/userSlice";
 
 function UserOrdersPage() {
+  const orders = useSelector(selectUserOrders);
+  console.log(orders);
   return (
     <div>
       <NavBar>
@@ -22,7 +26,7 @@ function UserOrdersPage() {
           </svg>
           My Orders :
         </h1>
-        <UserOrders />
+          <UserOrders />
       </NavBar>
     </div>
   );

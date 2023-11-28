@@ -4,12 +4,14 @@ import { Navigate } from "react-router-dom";
 import { checkUserAsync } from "../authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { selectUserInfo } from "../../user/userSlice";
 
 export default function Login() {
   const dispatch = useDispatch();
 
   const error = useSelector(selectError);
   const user = useSelector(selectLoggedInUser);
+  const userInfo = useSelector(selectUserInfo);
   const {
     register,
     handleSubmit,
@@ -18,8 +20,8 @@ export default function Login() {
 
   return (
     <>
-      {user && user.role === "user" && (<Navigate to="/" replace={true}></Navigate>)}
-      {user && user.role === "admin" && (<Navigate to="/admin" replace={true}></Navigate>)}
+      {user && userInfo && userInfo?.role === "user" && (<Navigate to="/" replace={true}></Navigate>)}
+      {user && userInfo && userInfo?.role === "admin" && (<Navigate to="/admin" replace={true}></Navigate>)}
 
       <div className="flex min-h-full flex-1 flex-col justify-center px-12 py-12 lg:px-8 ">
       
@@ -99,7 +101,7 @@ export default function Login() {
                   <p className="text-red-500">{errors.password.message}</p>
                 )}
               </div>
-              {error && <p className="text-red-500">{error.message}</p>}
+              {error && <p className="text-red-500">{error || error.message}</p>}
             </div>
 
             <div className="flex items-center justify-center ">

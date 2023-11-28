@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductByIdAsync, selectProductById } from '../../product/productSlice';
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/cartSlice";
-import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from '../../../app/constants';
 
 const highlights = [
@@ -19,7 +18,6 @@ function classNames(...classes) {
 
 export default function  AdminProductDetail() {
   const product = useSelector(selectProductById);
-  const user = useSelector(selectLoggedInUser);
   const dispatch = useDispatch();
   const params = useParams();
 

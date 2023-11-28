@@ -8,8 +8,8 @@ import {
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectItems } from "../cart/cartSlice";
-import { selectUserInfo } from "../user/userSlice";
-import { selectLoggedInUser } from "../auth/authSlice";
+import { selectUserInfo } from '../user/userSlice';
+
 
 const navigation = [
   { name: "Home", to: "/", user: true },
@@ -31,10 +31,9 @@ function classNames(...classes) {
 export default function Navbar({ children }) {
   const items = useSelector(selectItems);
   const userInfo = useSelector(selectUserInfo);
-  const user = useSelector(selectLoggedInUser);
   //  console.log(isProductListPage)
   const filteredUserNavigation = userNavigation.filter(
-    (item) => item.name !== "My Orders" || user.role !== "admin"
+    (item) => item.name !== "My Orders" || (userInfo && userInfo.role !== "admin")
   );
 
   return (
@@ -65,7 +64,7 @@ export default function Navbar({ children }) {
                       <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                           {navigation.map((item) =>
-                            item[user.role] ? (
+                            item[userInfo.role] ? (
                               <Link
                                 key={item.name}
                                 to={item.to}
