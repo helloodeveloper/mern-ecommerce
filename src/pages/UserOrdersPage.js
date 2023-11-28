@@ -5,6 +5,7 @@ import { selectUserOrders } from "../features/user/userSlice";
 
 function UserOrdersPage() {
   const orders = useSelector(selectUserOrders);
+ 
   console.log(orders);
   return (
     <div>
@@ -26,7 +27,7 @@ function UserOrdersPage() {
           </svg>
           My Orders :
         </h1>
-          <UserOrders />
+         <UserOrders />
       </NavBar>
     </div>
   );

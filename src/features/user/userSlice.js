@@ -7,7 +7,8 @@ import {
 
 const initialState = {
   status: "idle",
-  userInfo: null, // this info will be used in case of detailed user info, while auth will
+  userInfo: null
+  // this info will be used in case of detailed user info, while auth will
   // only be used for loggedInUser id etc checks
 };
 
@@ -57,6 +58,7 @@ export const userSlice = createSlice({
         // this info can be different or more from logged-in User info
         state.userInfo.orders = action.payload;
       })
+      
       .addCase(updateUserAsync.pending, (state) => {
         state.status = "loading";
       })

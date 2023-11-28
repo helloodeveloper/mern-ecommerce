@@ -2,15 +2,12 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchLoggedInUserOrderAsync,
-  selectUserInfo,
-  selectUserInfoStatus,
   selectUserOrders,
 } from "../userSlice";
 import { discountedPrice } from "../../../app/constants";
 
 export default function UserOrders() {
   const dispatch = useDispatch();
-  const status = useSelector(selectUserInfoStatus);
   const orders = useSelector(selectUserOrders);
 
   useEffect(() => {

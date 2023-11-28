@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { selectError, selectLoggedInUser } from "../authSlice";
 import { Navigate } from "react-router-dom";
-import { checkUserAsync } from "../authSlice";
+import { loginUserAsync } from "../authSlice";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserInfo } from "../../user/userSlice";
@@ -20,11 +20,14 @@ export default function Login() {
 
   return (
     <>
-      {user && userInfo && userInfo?.role === "user" && (<Navigate to="/" replace={true}></Navigate>)}
-      {user && userInfo && userInfo?.role === "admin" && (<Navigate to="/admin" replace={true}></Navigate>)}
+      {user && userInfo && userInfo?.role === "user" && (
+        <Navigate to="/" replace={true}></Navigate>
+      )}
+      {user && userInfo && userInfo?.role === "admin" && (
+        <Navigate to="/admin" replace={true}></Navigate>
+      )}
 
       <div className="flex min-h-full flex-1 flex-col justify-center px-12 py-12 lg:px-8 ">
-      
         <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white shadow-2xl rounded-md rounded-b-none mt-20 ">
           <h2 className=" py-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
@@ -35,7 +38,7 @@ export default function Login() {
             noValidate
             onSubmit={handleSubmit((data) => {
               dispatch(
-                checkUserAsync({ email: data.email, password: data.password })
+                loginUserAsync({ email: data.email, password: data.password })
               );
             })}
             className="space-y-6"
@@ -53,7 +56,7 @@ export default function Login() {
                   {...register("email", {
                     required: "email is required",
                     pattern: {
-                       // eslint-disable-next-line
+                      // eslint-disable-next-line
                       value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
                       message: "email not valid",
                     },
@@ -101,7 +104,9 @@ export default function Login() {
                   <p className="text-red-500">{errors.password.message}</p>
                 )}
               </div>
-              {error && <p className="text-red-500">{error || error.message}</p>}
+              {error && (
+                <p className="text-red-500">{error || error.message}</p>
+              )}
             </div>
 
             <div className="flex items-center justify-center ">
@@ -130,7 +135,6 @@ export default function Login() {
           </p>
         </div>
       </div>
-  
     </>
   );
 }

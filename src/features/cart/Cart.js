@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
   deleteItemFromCartAsync,
+  selectCartLoaded,
   selectItems,
   updateCartAsync,
 } from "./cartSlice";
@@ -14,6 +15,7 @@ import Modal from "../common/Modal";
 export default function Cart() {
   const dispatch = useDispatch();
   const items = useSelector(selectItems);
+  const cartLoaded = useSelector(selectCartLoaded)
   const [openModal, setOpenModal] = useState(null);
 
   const totalAmount = items.reduce(
@@ -31,7 +33,7 @@ export default function Cart() {
   };
   return (
     <>
-      {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {cartLoaded && !items.length && <Navigate to="/" replace={true}></Navigate>}
       <div className="py-4">
         <div className=" flex justify-between  mx-auto shadow-orange-200 border-b-2 bg-white rounded-b-none rounded-lg mt-4 max-w-7xl px-6 py-6 sm:px-6 lg:px-8 ">
           <h1 className="flex  text-3xl font-bold font-serif tracking-tight text-blue-950 py-2">
