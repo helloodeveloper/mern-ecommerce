@@ -22,6 +22,10 @@ export default function StripeCheckout() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ totalAmount: currentOrder.totalAmount }),
+      meta:{
+        order_id: currentOrder.id //this go to the stripe then from there it will go to webhook
+       //so we can conclude that payment was successful, even if client closes the window after pay
+      }
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
